@@ -24,10 +24,26 @@ class SLL {
     // add given node to the head, if it exists. return void
     // list is empty?
     // list already has nodes?
-    addToFront(node) { }
+    addToFront(node) { 
+        let temp
+        if(this.isEmpty()){
+            this.head = node
+        }else{
+            temp = this.head
+            this.head = node
+            this.head.next = temp
+        }
+        return
+    }
 
     // create a new node with given data, add it to the head. return void
-    addDataToFront(data) {}
+    addDataToFront(data) {
+        let temp 
+            temp = this.head
+            this.head = new Node(data)
+            this.head.next = temp
+        return
+    }
 }
 
 // instantiate the SLL
@@ -38,6 +54,9 @@ var myNode = new Node(55);
 
 // executing methods:
 myList.addToFront(myNode);
-// myList.addToFront(new Node(44));
-// myList.addToFront(new Node(33));
-// myList.addToFront(new Node(22));
+myList.addToFront(new Node(44));
+console.log(myList)
+myList.addToFront(new Node(33));
+console.log(myList)
+myList.addToFront(new Node(22));
+console.log(myList)

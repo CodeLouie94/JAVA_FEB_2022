@@ -12,8 +12,10 @@ class SLL {
 
     isEmpty() {
         if (this.head) {
+            console.log("hii");
             return false;
         } else {
+            console.log("first");
             return true;
         }
     }
@@ -24,10 +26,20 @@ class SLL {
     // add given node to the head, if it exists. return void
     // list is empty?
     // list already has nodes?
-    addToFront(node) { }
+    addToFront(node) {
+        if(this.isEmpty()){ 
+            console.log("hi")   
+            this.head = node
+        }else { 
+            node.next = this.head
+            this.head = node
+        }
+     }
 
     // create a new node with given data, add it to the head. return void
-    addDataToFront(data) {}
+    addDataToFront(data) {
+     
+    }
 }
 
 // instantiate the SLL
@@ -38,6 +50,7 @@ var myNode = new Node(55);
 
 // executing methods:
 myList.addToFront(myNode);
-// myList.addToFront(new Node(44));
-// myList.addToFront(new Node(33));
-// myList.addToFront(new Node(22));
+myList.addToFront(new Node(44));
+myList.addToFront(new Node(33));
+myList.addToFront(new Node(22));
+console.log(myList);
