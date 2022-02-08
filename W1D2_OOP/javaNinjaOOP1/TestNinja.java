@@ -3,8 +3,8 @@ public class TestNinja {
 
         // Predict the Output (if there are any errors,
         // try to predict what it will say, and then fix it.)
-        Ninja hikusake = new Ninja();
-        System.out.println(hikusake.name);
+        Ninja hikusake = new Ninja("Kenshiro");
+        System.out.println(hikusake.getName());
         Ninja kikomo = new Ninja("Kikomo");
         kikomo.displayStats();
         kikomo.eatStrawberry();

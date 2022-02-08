@@ -10,13 +10,14 @@ class Ninja {
 
     public void displayStats(){
         System.out.println("Name: " + this.name);
-        System.out.println("Health:" + str(self.health));
+        System.out.println("Health:" + this.health);
     }
 
     public void eatStrawberry(){
-        this.health += 10
+        this.health += 10;
     }
 
+//  -------- GETTERS AND SETTERS --------
     public int getHealth() {
         return this.health;
     }

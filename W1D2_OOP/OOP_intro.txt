@@ -1,18 +1,26 @@
 OOP Basics Warm Up
 
     What does OOP stand for? What is it, briefly?
-
-
+    Object Oriented Programming
+    why?
+        D.R.Y.
+        models real life
                             
     What is a class?
-
+        blueprint - (how?)
+        instance of an object (creation)
 
                             
     Classes in Java contain member variables and methods. Give a brief explanation for each:
                                 
     Member Variables: 
+        attributes
+        what a class has
+        characteristics
 
-    Methods:	
+    Methods:	(verb)
+        what a class can DO
+        actions 
                 
 
 
