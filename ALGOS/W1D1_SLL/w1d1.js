@@ -9,9 +9,6 @@ class SLL {
     constructor() {
         this.head = null;
     }
-    isEmpty2() {
-        return this.head == null
-    }
 
     isEmpty() {
         if (this.head) {
