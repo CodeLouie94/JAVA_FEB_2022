@@ -33,7 +33,14 @@ class SLL {
     // ---------------------------------
     // console log (print) the data of every node in the current list
     // traversal
-    read() {}
+    read() {
+        let runner = this.head
+        while (runner)
+            console.log(runner.value)
+            runner = runner.next
+    }
+
+    read()
 
     // find: return true / false if current list contains a data equal to value
     contains(value) {}

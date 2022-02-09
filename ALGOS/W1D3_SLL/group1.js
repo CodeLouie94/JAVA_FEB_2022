@@ -7,9 +7,9 @@ class Node {
 
 class SLL {
     constructor() {
-            this.head = null;
-        }
-        // return true or false if this.head is null
+        this.head = null;
+    }
+    // return true or false if this.head is null
     isEmpty() {
         return this.head == null;
     }
@@ -33,13 +33,49 @@ class SLL {
     // ---------------------------------
     // console log (print) the data of every node in the current list
     // traversal
-    read() {}
+
+
+    read() {
+        var runner = this.head
+        while (runner) {
+            console.log(runner.data);
+            runner = runner.next;
+        }
+    }
 
     // find: return true / false if current list contains a data equal to value
-    contains(value) {}
+    contains(data) {
+        var runner = this.head
+        while (runner) {
+            if(runner.data == data){
+                return true
+            }else{
+            runner = runner.next;
+            }
+        }
+        return false
+    }
 
     // Remove from front: remove and return the first node in the SLL
-    removeFromFront() {}
+    removeFromFront() {
+        var runner = this.head;
+        if(runner.next){
+            this.head = runner.next;
+            runner.next = null
+        }
+        return runner
+    }
 }
+
+var myCoolList = new SLL();
+myCoolList.addDataToFront(9001);
+myCoolList.addDataToFront(1337);
+myCoolList.addDataToFront(33);
+myCoolList.addDataToFront(22);
+myCoolList.addDataToFront(11);
+console.log(myCoolList)
+
+// myCoolList.read()
+myCoolList.removeFromFront();
 
 // ⚠ don't forget to instantiate the Singly Linked List

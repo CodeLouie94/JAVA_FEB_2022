@@ -33,13 +33,46 @@ class SLL {
     // ---------------------------------
     // console log (print) the data of every node in the current list
     // traversal
-    read() {}
+    read(runner) {
+        console.log(runner.data)
+        if(runner.next == null) return;
+        read(runner.next)
+    }
 
     // find: return true / false if current list contains a data equal to value
-    contains(value) {}
-
+    contains(value) {
+        let runner = this.head
+        while(runner){
+            if (runner.data === value){
+                return true
+            }
+            runner = runner.next
+        }
+        return false
+    }
+    
+    // set runner to this.head
+    // set this.head = next?
+    // set current node runner is pointing to to null
+    
     // Remove from front: remove and return the first node in the SLL
-    removeFromFront() {}
+    removeFromFront() {
+        if(!this.head){
+            return null
+        }
+        let runner = this.head;
+        this.head = this.head.next
+        runner.next = null
+        return runner
+    }
 }
 
 // ⚠ don't forget to instantiate the Singly Linked List
+singularList = new SLL();
+singularList.addDataToFront(33)
+singularList.addDataToFront(22)
+singularList.addDataToFront(11)
+singularList.read()
+console.log(singularList.contains(11))
+console.log(singularList.contains(20))
+console.log(singularList.removeFromFront())
