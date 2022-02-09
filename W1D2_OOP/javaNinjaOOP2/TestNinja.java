@@ -1,10 +1,17 @@
 public class TestNinja {
     public static void main(String[] args) {
 
-        Ninja kikomo = new Ninja("Kikomo");
+        Sword katanaSword = new Sword("katana");
+
+
+        Ninja kikomo = new Ninja("Kikomo", katanaSword);
 
         kikomo.displayStats();
-        kikomo.pickUpSword("katana");
+
+
+
+
+        kikomo.pickUpSword(katanaSword);
         kikomo.eatStrawberry();
         kikomo.displayStats();
         
