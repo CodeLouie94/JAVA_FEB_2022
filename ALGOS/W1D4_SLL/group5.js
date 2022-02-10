@@ -39,7 +39,6 @@ class SLL {
     // Remove from front: remove and return the first node in the SLL
     removeFromFront() {
         if (this.isEmpty()) return null; // nothing to remove
-
         var removed = this.head; // save the head in a temp variable
         this.head = this.head.next; // move the head
         removed.next = null; // make removed no longer reference the list
@@ -76,14 +75,33 @@ class SLL {
     // consider the edge case if you have to delete the head node
     // consider the edge case your list is empty
     // consider the edge case that your list does not contain the data
-    delete(data) { }
-
+    delete(data) { 
+        let runner = this.head
+        if(runner.data === data){
+            this.head = this.head.next;
+        }
+        while(runner){
+            if(runner.next.data === data){
+                runner.next = runner.next.next;
+            }
+            else{
+                runner = runner.next
+            }
+        }
+    }
+  
     // return the size of the current linked list
     // BONUS: how might you do this without linearly traversing the list? O(1)
     // you may have to change other methods within this class... 
     size() { }
 }
-
+let apples = new SLL();
+apples.addToFront(new Node(10));
+apples.addToFront(new Node(9));
+apples.addToFront(new Node(8));
+apples.delete(10);
+console.log(apples);
+console.log(apples.removeFromFront());
 // Don't forget to instantiate the SLL!
 // and add a few nodes first!
 

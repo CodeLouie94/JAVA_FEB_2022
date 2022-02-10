@@ -8,6 +8,7 @@ class Node {
 class SLL {
     constructor() {
         this.head = null;
+        this.length=0;
     }
 
     // console log (print) the data of every node in the current list
@@ -43,6 +44,7 @@ class SLL {
         var removed = this.head; // save the head in a temp variable
         this.head = this.head.next; // move the head
         removed.next = null; // make removed no longer reference the list
+        this.length--;
         return removed;
     }
 
@@ -55,6 +57,7 @@ class SLL {
     addToFront(node) {
         node.next = this.head; // set the new node's next to the head
         this.head = node; // move the head to the new node
+        this.length++;
     }
 
     // myList.addToFront(new Node(22));
@@ -76,12 +79,38 @@ class SLL {
     // consider the edge case if you have to delete the head node
     // consider the edge case your list is empty
     // consider the edge case that your list does not contain the data
-    delete(data) { }
+    delete(value) {
+        var runner = this.head;
+        if (!runner){
+            return "There is no list";
+        }
+        if (!this.contains(value)) {
+            return "The list does not contain the value";
+        }
+        if (runner.data === value) {
+            return this.removeFromFront();
+        }
+        while (runner.next.data != value) {
+            runner = runner.next;
+        }
+        runner.next = runner.next.next;
+        this.length--;
+        // var runner = this.head;
+        // !runner ? "There is no list" :
+        //     !this.contains(value) ? "The list is void" :
+        //         runner.data === value && this.removeFromFront();
+        // while (runner.next.data != value)
+        //     runner = runner.next;
+        // runner.next = runner.next.next;
+        // this.length--;
+    }
 
     // return the size of the current linked list
     // BONUS: how might you do this without linearly traversing the list? O(1)
     // you may have to change other methods within this class... 
-    size() { }
+    size() { 
+        return this.length;
+    }
 }
 
 // Don't forget to instantiate the SLL!
@@ -90,3 +119,16 @@ class SLL {
 // (head) -> (33) -> (22) -> null
 //            ^
 //          runner
+
+var myList=new SLL();
+myList.addDataToFront(44);
+myList.addDataToFront(33);
+myList.addDataToFront(22);
+myList.addDataToFront(11);
+
+console.log(myList.size())
+myList.read()
+
+myList.delete(11)
+console.log(myList.size())
+myList.read()
