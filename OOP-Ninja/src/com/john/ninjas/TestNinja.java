@@ -18,6 +18,17 @@ public class TestNinja {
 		
 		String weapon = shaggy.getWeapon();
 		System.out.println(shaggy.getName() + " has a weapon: " + weapon);
+	
+//		using interface
+		Sesnei masterSplinter = new Sesnei("Master Splinter", 1000);
+		String result = masterSplinter.sayWisdom();
+		System.out.println(result);
+		
+		
+		
+		
+	
+	
 	}
 
 }
