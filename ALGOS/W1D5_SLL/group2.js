@@ -5,12 +5,6 @@ class Node {
     }
 }
 
-// SLL
-// - add (to head... append, prepend, tail)
-// - remove (from head, by value... tail)
-// - read (print all, count)
-// - search (contains)
-// - isEmpty
 
 class SLL {
     constructor() {
@@ -18,30 +12,54 @@ class SLL {
         // this.length = 0;
     }
 
-    // if the linked list has a second to last value, print it
-    // return nothing
-    // input: head -> (1) -> (5) -> (11) -> (7) -> (9) ->
-    // print: 7
-    printSecondToLastValue() { }
 
-    // bonus: print nth to last
-    // if the link list has a nth to last value, print it
-    // return nothing
-    // input: head -> (1) -> (5) -> (11) -> (7) -> (9) -> (4) -> (19) -> (30) ->
-    //        n = 4
-    // print: 9
-    // hint - use 2 runners 
-    printNthToLast(n) { }
+    printSecondToLastValue() {
+        let runner = this.head;
+        while(runner.next){
+            if (runner.next.next == null){
+                console.log(runner.data)
+            }
+            runner = runner.next
+        }
+    }
 
-    // reverse linked list in place
-    // ** you may not swap values between nodes **
-    // input:  head -> (1) -> (2) -> (3) ->
-    // output: head -> (3) -> (2) -> (1) ->
-    reverse() { }
+
+    printNthToLast(n) {
+        let runner = this.head
+        let walker = this.head
+        for(let i=0;i<n;i++){
+            runner = runner.next
+        }
+        while(runner){
+            if(runner.next = null){
+                console.log(walker.data)
+            }
+            else{
+                runner = runner.next
+                walker = walker.next
+            }
+        }
+    }
+
+
+    reverse() {
+        let current = this.head.next
+        let last = this.head.next.next
+        current.next = null
+        while(last){
+            current.next = this.head
+            this.head = current
+            current = last
+            if(last){
+                last = last.next
+            }
+        }
+        console.log(this.head);
+    }
 
     
 
-    // console log (print) the data of every node in the current list
+
     read() {
         var current = this.head; // set current as the head, if it exists or not
         while (current) { // if current, log and move to current.next
@@ -141,8 +159,21 @@ class SLL {
         // return this.length;
     }
 }
+//instantiate new list
+singularList =  new SLL();
 
 
+singularList.addDataToFront(80);
+singularList.addDataToFront(70);
+singularList.addDataToFront(60);
+singularList.addDataToFront(50);
+singularList.addDataToFront(40);
+singularList.addDataToFront(30);
+singularList.addDataToFront(20);
+singularList.addDataToFront(10);
+
+singularList.printSecondToLastValue();
+singularList.reverse();
 
 // Don't forget to instantiate the SLL!
 // and add a few nodes first!

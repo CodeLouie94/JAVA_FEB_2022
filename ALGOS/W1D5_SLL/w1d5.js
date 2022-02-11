@@ -18,11 +18,24 @@ class SLL {
         // this.length = 0;
     }
 
-    // if the linked list has a second to last value, print it
+        // if the linked list has a second to last value, print it
     // return nothing
     // input: head -> (1) -> (5) -> (11) -> (7) -> (9) ->
     // print: 7
-    printSecondToLastValue() { }
+    printSecondToLastValue() {
+        let runner = this.head;
+
+        if (!runner) return;
+        if (!runner.next) return;
+
+        while (runner.next) {
+            if (runner.next.next === null) {
+                console.log(runner.data);
+                return;
+            }
+            runner = runner.next;
+        }
+    }
 
     // bonus: print nth to last
     // if the link list has a nth to last value, print it
@@ -31,15 +44,44 @@ class SLL {
     //        n = 4
     // print: 9
     // hint - use 2 runners 
-    printNthToLast(n) { }
+    printNthToLast(n) {
+        if (this.head === null) return;
+
+        var runnerFast = this.head;
+        var runnerSlow = this.head;
+        var count = 0;
+
+        while (runnerFast) {
+            if (count >= n) {
+                runnerSlow = runnerSlow.next;
+            }
+            runnerFast = runnerFast.next;
+            count++;
+        }
+
+        if (count > n) {
+            console.log(runnerSlow.data);
+        }
+    }
 
     // reverse linked list in place
     // ** you may not swap values between nodes **
     // input:  head -> (1) -> (2) -> (3) ->
     // output: head -> (3) -> (2) -> (1) ->
-    reverse() { }
+    reverse() {
+        var prev = null;
+        var current = this.head;
+        var next = null;
+        while (current) {
+            next = current.next;
+            current.next = prev; //node
+            prev = current;
+            current = next;
+        }
+        this.head = prev;
+    }
 
-    
+
 
     // console log (print) the data of every node in the current list
     read() {
@@ -79,6 +121,12 @@ class SLL {
     }
 
     // return true or false if this.head is null
+    /**
+     * Determines if this list is empty.
+     * - Time: O(1).
+     * - Space: O(1).
+     * @returns {boolean}
+     */
     isEmpty() {
         return this.head == null;
     }
@@ -94,6 +142,14 @@ class SLL {
     // when a pointer is to the RIGHT of an equal sign, we are READING it
 
     // create a new node with given data, add it to the head. return void
+    /**
+     * Creates a new node with the given data and inserts that node at the front
+     * of this list.
+     * - Time: O(1).
+     * - Space: O(?).
+     * @param {any} data The data for the new node.
+     * @returns {SinglyLinkedList} This list.
+     */
     addDataToFront(data) { // 10
         var newNode = new Node(data); // create a new node with the data
         newNode.next = this.head; // set the new node's next to the head
@@ -146,3 +202,11 @@ class SLL {
 
 // Don't forget to instantiate the SLL!
 // and add a few nodes first!
+
+
+/**
+ * this function will return hi!
+ */
+function hi() {
+
+}

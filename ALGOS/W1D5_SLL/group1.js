@@ -22,7 +22,10 @@ class SLL {
     // return nothing
     // input: head -> (1) -> (5) -> (11) -> (7) -> (9) ->
     // print: 7
-    printSecondToLastValue() { }
+    printSecondToLastValue() {
+        let runner = this.head
+        
+     }
 
     // bonus: print nth to last
     // if the link list has a nth to last value, print it

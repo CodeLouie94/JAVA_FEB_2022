@@ -22,22 +22,95 @@ class SLL {
     // return nothing
     // input: head -> (1) -> (5) -> (11) -> (7) -> (9) ->
     // print: 7
-    printSecondToLastValue() { }
+    printSecondToLastValue() {            
+        var runner = this.head;
+        while (runner) {
+            if (!runner.next.next) {
+                console.log(runner.data);
+                return runner.data;
+            }
+            if (runner.next) {
+                runner = runner.next;
+            } 
+        }
+    }
 
     // bonus: print nth to last
     // if the link list has a nth to last value, print it
     // return nothing
-    // input: head -> (1) -> (5) -> (11) -> (7) -> (9) -> (4) -> (19) -> (30) ->
+    // input: h
+    //    > (1) -> (5) -> (11) -> (7) -> (9) -> (4) -> (19) -> (30) ->
     //        n = 4
     // print: 9
     // hint - use 2 runners 
-    printNthToLast(n) { }
+        
+    printNthToLast(n) {
+        var runner1 = this.head;
+        var runner2 = this.head;
+        for (let i = 0; i < n; i++) {
+            if (runner2.next) {
+                runner2 = runner2.next;
+            }
+        }
+        if (!runner2.next){
+          console.log(runner1.data)
+          return runner1.data
+        }
+        while (runner2) {
+            runner1 = runner1.next;
+            runner2 = runner2.next;
+        }
+        console.log(runner1.data)
+        return runner1.data;
+    }
+
+    printNthToLast2(n) {
+      let len = 0;
+      let temp = this.head;
+
+      // count the number of nodes
+      while (temp != null){
+        temp = temp.next
+        len++;
+      }
+      // check if the value of n is not more than length of the list
+      if (len < n){
+        return;
+      }
+
+      temp = this.head;
+      // get the ~length-n+1~ node from the start.
+      for (let i = 1; i < len - n + 1; i++){
+        temp = temp.next
+      }
+      return temp.data;
+    }
 
     // reverse linked list in place
     // ** you may not swap values between nodes **
     // input:  head -> (1) -> (2) -> (3) ->
     // output: head -> (3) -> (2) -> (1) ->
-    reverse() { }
+    reverse() { 
+        let runner = this.head;
+        let previous = null;
+        let temp;
+        
+        while (runner) {
+            // save the next before we overwrite runner.next 
+            
+
+            temp = runner.next;
+            
+            // reverse the pointer
+            runner.next = previous
+
+            
+            // go forward in the list
+            previous = runner;
+            runner = temp;           
+        }
+        this.head = previous; 
+    }
 
     
 
@@ -142,7 +215,28 @@ class SLL {
     }
 }
 
+let node1 = new Node(11);
+let node2 = new Node(31);
+let node3 = new Node(20);
+let node4 = new Node(50);
+let sll = new SLL();
 
+sll.addToFront(node4);
+sll.addToFront(node3);
+sll.addToFront(node2);
+sll.addToFront(node1);
+
+// console.log(sll)
+// sll.reverse()
+// console.log(sll)
+// sll.printNthToLast(4);
+// sll.printNthToLast(3);
+// sll.printNthToLast(2);
+// sll.printNthToLast(1);
+console.log(sll.printNthToLast2(4));
+console.log(sll.printNthToLast2(3));
+console.log(sll.printNthToLast2(2));
+console.log(sll.printNthToLast2(1));
 
 // Don't forget to instantiate the SLL!
 // and add a few nodes first!

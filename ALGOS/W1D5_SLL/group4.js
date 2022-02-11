@@ -22,7 +22,18 @@ class SLL {
     // return nothing
     // input: head -> (1) -> (5) -> (11) -> (7) -> (9) ->
     // print: 7
-    printSecondToLastValue() { }
+    printSecondToLastValue() {
+        var runner = this.head
+        while(runner){
+            if(runner.next.next === null){
+                console.log(runner.data)
+                return
+            }
+            else{
+                runner=runner.next
+            }
+        }
+     }
 
     // bonus: print nth to last
     // if the link list has a nth to last value, print it
@@ -31,13 +42,51 @@ class SLL {
     //        n = 4
     // print: 9
     // hint - use 2 runners 
-    printNthToLast(n) { }
+    printNthToLast(n) {
+        var runner1 = this.head
+        var runner2 = this.head
+        var count = 0
+        while(runner1){
+            if(runner1.next === null){
+                return
+            } else {
+                runner1=runner1.next
+                count+=1
+            }
+        }
+        while(runner2){
+            if(count<n){
+                console.log(runner2.data)
+                return
+            }else{
+                runner2=runner2.next
+                count-=1
+            }
+        }
+
+     }
 
     // reverse linked list in place
     // ** you may not swap values between nodes **
     // input:  head -> (1) -> (2) -> (3) ->
     // output: head -> (3) -> (2) -> (1) ->
-    reverse() { }
+    reverse() {
+        var current = this.head
+        var forward =this.head.next
+        var past = null
+        while(current){
+            if(forward === null){
+                console.log(current)
+                return
+            } else {
+                current = forward
+                forward = forward.next
+                current.next = past
+                past = current
+            }
+        }
+
+     }
 
     
 
@@ -143,6 +192,17 @@ class SLL {
 }
 
 
+var sll= new SLL();
+sll.addDataToFront(77)
+sll.addDataToFront(66)
+sll.addDataToFront(55)
+sll.addDataToFront(44)
+sll.addDataToFront(33)
+sll.addDataToFront(22)
+sll.addDataToFront(11)
+
+// sll.printSecondToLastValue();
+sll.reverse()
 
 // Don't forget to instantiate the SLL!
 // and add a few nodes first!
