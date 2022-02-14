@@ -37,12 +37,12 @@ class slStack {
 
     // aka check top
     peek() {
-
+        console.log(this.top.data)
     }
 
     // check if empty
     isEmpty() {
-
+        return this.top? true:false
     }
 
     // "1" == 1 true
@@ -50,17 +50,41 @@ class slStack {
 
     // length getter
     getLength() {
-
-    }
+        var temp = new slStack
+        var 
+        
+        // let walker = this.top
+        // let count = 0
+        // while (walker !=null){
+        //     walker= temp.next 
+        //     count ++
+        //     console.log(count)
+        // }
+        // return count
 }
 
+
+}
+
+
 slack = new slStack()
+console.log(slack.isEmpty())
 node1 = new Node(25)
 node2 = new Node(33)
 node3 = new Node(45)
 
-push(node1)
-push(node2)
-push(node3)
+slack.push(node1)
+slack.push(node2)
+slack.push(node3)
+
+console.log(slStack)
+console.log(slack.top)
+
+slack.pop()
+console.log(slack.top)
+
+slack.peek()
+console.log(slack.isEmpty())
+console.log(slack.getLength())
 // don't forget to instantiate the slStack!
 // add a few nodes first
