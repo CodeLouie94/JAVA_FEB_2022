@@ -22,23 +22,68 @@ class slStack {
     }
 
     // add to top
-    push(newNode) {}
+    push(newNode) {
+        if (this.top) {
+            newNode.next = this.top;
+            this.top = newNode;
+        } else {
+            this.top = newNode;
+        }
+    }
 
     // remove from top
-    pop() {}
+    pop() {
+        if (this.top == null)
+            return null;
+        // this is an else LOL 
+        var temp = this.top; // store the previous top
+        this.top = this.top.next; // move top pointer to the next node
+        return temp;
+    }
 
     // aka check top
-    peek() {}
+    peek() {
+        return this.top;
+    }
 
     // check if empty
-    isEmpty() {}
+    isEmpty() {
+        return this.top === null;
+        // if (this.top == null){
+        //     return true;
+        // } else {
+        //     return false;
+        // }
+    }
 
     // "1" == 1 true
     // "1" === 1 false
 
     // length getter
-    getLength() {}
+    getLength() {
+        var counter = 0;
+        while (this.top) {
+            counter++;
+            this.top = this.top.next
+        } 
+        return counter;
+        // return this.length;
+    }
 }
 
 // don't forget to instantiate the slStack!
 // add a few nodes first
+var stack1 = new slStack();
+// var stack2 = new slStack();
+stack1.push(new Node(10));
+stack1.push(new Node(20));
+stack1.push(new Node(30));
+stack1.push(new Node(40));
+stack1.push(new Node(50));
+// console.log(stack1.peek());
+// stack1.pop()
+// stack1.isEmpty();
+// console.log(stack2.isEmpty());
+console.log(stack1.getLength());
+// console.log(stack2.getLength());
+// console.log(stack1);

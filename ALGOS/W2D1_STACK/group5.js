@@ -22,23 +22,45 @@ class slStack {
     }
 
     // add to top
-    push(newNode) {}
+    push(newNode) {
+        // this.top = node1
+        newNode.next = this.top
+        this.top = newNode
+    }
 
     // remove from top
-    pop() {}
+    pop() {
+        let temp = this.top
+        this.top= this.top.next
+        return temp.data
+    }
 
     // aka check top
-    peek() {}
+    peek() {
+
+    }
 
     // check if empty
-    isEmpty() {}
+    isEmpty() {
+
+    }
 
     // "1" == 1 true
     // "1" === 1 false
 
     // length getter
-    getLength() {}
+    getLength() {
+
+    }
 }
 
+slack = new slStack()
+node1 = new Node(25)
+node2 = new Node(33)
+node3 = new Node(45)
+
+push(node1)
+push(node2)
+push(node3)
 // don't forget to instantiate the slStack!
 // add a few nodes first

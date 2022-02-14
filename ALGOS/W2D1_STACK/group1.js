@@ -22,16 +22,38 @@ class slStack {
     }
 
     // add to top
-    push(newNode) {}
+    push(newNode) {
+        newNode.next = this.top
+        this.top = newNode 
+    }
 
     // remove from top
-    pop() {}
+    pop() {
+        if(this.top == null){
+            return
+        }
+        let holder = this.top
+        this.top = this.top.next
+        return holder
+    }
 
     // aka check top
-    peek() {}
+    peek() {
+        if(this.top != null){
+            console.log(this.top.data)
+        }else{
+            console.log("empty stack")
+        }
+    }
 
     // check if empty
-    isEmpty() {}
+    isEmpty() {
+        if(this.top){
+            return("true")
+        }else{
+            return("false")
+        }
+    }
 
     // "1" == 1 true
     // "1" === 1 false
@@ -42,3 +64,18 @@ class slStack {
 
 // don't forget to instantiate the slStack!
 // add a few nodes first
+
+var stack = new slStack();
+stack.push(new Node(10));
+stack.push(new Node(11));
+stack.push(new Node(12));
+stack.push(new Node(13));
+
+stack.peek();
+
+console.log(stack);
+stack.pop();
+console.log(stack);
+
+stack.isEmpty();
+
