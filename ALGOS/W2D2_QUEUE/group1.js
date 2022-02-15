@@ -13,7 +13,6 @@ class Node {
 // - peek
 // - isEmpty
 // - count
-
 class Queue {
     constructor() {
         this.front = null; // sometimes called head "front of the line"
@@ -22,10 +21,30 @@ class Queue {
     }
 
     // add nodes to the back of the queue
-    enqueue(node) { }
+    enqueue(node) {
+        var node = new Node(node);
+        if (this.isEmpty()) {
+            this.front = node;
+            this.back = node;
+        } else {
+            this.back.next = node;
+            this.back = node;
+            this.length++;
+        }
+    }
 
     // remove from the front
-    dequeue() { }
+    dequeue() { 
+        if (!this.front) {
+            return null;
+        }
+        // !this.front && null;
+        var dequeued = this.front;
+        this.front = this.front.next;
+        dequeued.next = null;
+        this.length--;
+        return dequeued;
+    }
 
     // check the front of the queue
     peek() {
@@ -38,15 +57,15 @@ class Queue {
         }
     }
 
-
-
     // return true / false if queue is empty
     isEmpty() {
-        return this.front === null
-     }
+    return this.front === null;
+    }
 
     // return length
-    count() { }
+    count() { 
+        return this.length;
+    }  
 }
 
 // NINJA BONUS:
@@ -55,4 +74,17 @@ class Queue {
 // return the queue back to it's original order when you are done
 // you are not allowed to linearly traverse the queue
 // only use public methods enqueue(), dequeue(), peek(), isEmpty(), and count()
-function readQueue(queue) {}
+function readQueue(queue) {
+}
+
+var queue = new Queue();
+queue.enqueue(10);
+queue.enqueue(20);
+queue.enqueue(30);
+queue.enqueue(40);
+console.log(queue.peek());
+console.log(queue);
+queue.dequeue();
+console.log(queue);
+console.log(queue.peek());
+

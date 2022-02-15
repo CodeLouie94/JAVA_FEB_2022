@@ -30,15 +30,13 @@ class Queue {
     // check the front of the queue
     peek() {
         return this.front ? this.front.data : this.front;
-    
-        if (this.front) {
-            return this.front.data
-        } else {
-            return this.front
-        }
+
+        // if (this.front) {
+        //     return this.front.data
+        // } else {
+        //     return this.front
+        // }
     }
-
-
 
     // return true / false if queue is empty
     isEmpty() {

@@ -18,14 +18,33 @@ class Queue {
     constructor() {
         this.front = null; // sometimes called head "front of the line"
         this.back = null; // sometimes called rear or tail "back of the line"
-        this.length = 0;
     }
 
     // add nodes to the back of the queue
-    enqueue(node) { }
+    enqueue(node) {
+      if (!this.back){
+        this.front = node;
+        this.back = node;
+      } else {
+        this.back.next = node;
+        this.back = node;     
+      }
+    }
 
     // remove from the front
-    dequeue() { }
+    dequeue() {
+        let temp = this.front
+        if (this.front == null){
+          return null;
+        } else if (this.front.next == null){
+          this.front = null;
+          this.back = null;
+        } else {
+        this.front = this.front.next
+        temp.next = null
+        }
+        return temp
+     }
 
     // check the front of the queue
     peek() {
@@ -55,4 +74,38 @@ class Queue {
 // return the queue back to it's original order when you are done
 // you are not allowed to linearly traverse the queue
 // only use public methods enqueue(), dequeue(), peek(), isEmpty(), and count()
-function readQueue(queue) {}
+function readQueue(queue) {
+  let tempQue = new Queue()
+    
+  while(!queue.isEmpty()){
+      let temp = queue.dequeue()
+      console.log(temp.data)
+      tempQue.enqueue(temp)
+  }
+
+//   queue = tempQue;
+  
+  while(!tempQue.isEmpty()){
+      queue.enqueue(tempQue.dequeue());
+  }
+  return tempQue;
+  
+}
+
+queue = new Queue();
+node1 = new Node(10);
+node2 = new Node(20);
+node3 = new Node(30);
+queue.enqueue(node1);
+queue.enqueue(node2);
+queue.enqueue(node3);
+
+console.log(queue)
+readQueue(queue)
+console.log(queue)
+// console.log(queue.dequeue());
+// console.log(queue.dequeue());
+// console.log(queue.dequeue());
+// console.log(queue.dequeue());
+
+
