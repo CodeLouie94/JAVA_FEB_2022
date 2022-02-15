@@ -13,12 +13,15 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<p>
+		name: ${name }
+	</p>
 	<h3>Login</h3>
 	<form action='/processForm' method='POST'>
 	<h3>${ageError }</h3>
 		<p>
 			<label>Email:</label> 
-			<input type="text" name='email'>
+			<input type="text" name='email' value="${name }">
 		</p>
 
 		<p>

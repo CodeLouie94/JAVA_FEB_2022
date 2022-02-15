@@ -11,10 +11,13 @@
 </head>
 <body>
 	<h1>other.jsp</h1>
-	<c:out value="${name}"/>
+	name:<c:out value="${name}"/>
 	
 	<p>
 		session: ${sessionName }
+	</p>
+	<p>
+		num (Session) : ${num }
 	</p>
 </body>
 </html>

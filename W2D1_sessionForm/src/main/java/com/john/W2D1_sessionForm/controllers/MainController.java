@@ -20,13 +20,24 @@ public class MainController {
 		String sessionName = "Bob";
 		session.setAttribute("sessionName", sessionName);
 		
+		Integer num = 33;
+		session.setAttribute("num", num);
+		
 		return "index.jsp";
 	}
 	
 	@RequestMapping("/other")
-	public String other() {
-		
-		return "other.jsp";
+	public String other(HttpSession sesh) {
+//		check if key exists in session
+		if (sesh.getAttribute("num") != null) {			
+			Integer sessionNum = (Integer) sesh.getAttribute("num");
+			System.out.println(sessionNum);
+			return "other.jsp";
+		} else {
+			sesh.setAttribute("num", 0);
+			return "other.jsp";
+		}
 	}
+	
 
 }
