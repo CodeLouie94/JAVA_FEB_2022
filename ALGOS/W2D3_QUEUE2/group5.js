@@ -158,7 +158,27 @@ function countStack(stack) {
 // reverseString = "elppa"
 // normalString = "apple"
 
-function isPalindrome(queue) {}
+function isPalindrome(queue) {
+    let str1 = "";
+    let str1Reverse = "";
+    let queueLength = queue.count();
+    let counter = 0;
+    while (counter < queueLength) {
+        let tempNode = queue.dequeue();
+        str1 += tempNode.data;
+        queue.enqueue(tempNode);
+        counter += 1;
+    }
+    for (let i = str1.length - 1; i >= 0; i--) {
+        str1Reverse += str1[i];
+    }
+    if (str1 === str1Reverse) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
 
 
 var myQueue = new Queue();

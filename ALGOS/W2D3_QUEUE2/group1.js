@@ -158,8 +158,69 @@ function countStack(stack) {
 // reverseString = "elppa"
 // normalString = "apple"
 
-function isPalindrome(queue) {}
+function isPalindrome(queue) {
+    if(queue.front == null){
+        return false
+    }
+        return false
+    }
+        return false
+    }
+        return
+    }
+        
+    }
+    if
+    
+    newQueue = new Queue();
+    var tempArrForward = [];    while(!queue.isEmpty()){
+        tempNode = queue.dequeue();
+/2/2/2/2/2/2/2/2/2/2        tempArrForward.push(tempNode);
+        newQueue.enqueue(tempNode);
+    }
+    
+    ile(!qunewQue.isEmpty()){
 
+        queue.enqueue(queue.dequeue(););
+    }    
+        tempArrForward.push(tempNode);
+        queue.enqueue(queue.dequeue(););
+    }    
+        tempArrForward.push(tempNode);
+        queue.enqueue(queue.dequeue(););
+    }    
+        tempArrForward.push(tempNode);
+    eue(queue.dequeue(););
+        tempArrForward.push(tempNode);
+    eue(queue.dequeue(););
+    }    
+        tempArrForward.push(tempNode);
+        newQueue.enqueue(queue.dequeue(););
+    }    
+        tempArrForward.push(tempNode);
+        newQueue.enqueue(temp);
+    }    
+        tempArrForward.push(tempNode);
+        newQueue.enqueue(tempNode);
+    }    
+        tempArrForward.push(tempNode);
+        newQueue.enqueue(tempNode);
+    }    
+        tempArrForward.push(tempNode);
+        newQueue.enqueue(tempNode);
+    }    
+        tempArrForward.push(tempNode);
+        newQueue.enqueue(tempNode);
+    }    
+    empArrForward.length; left++){
+        let right = tempArrForward rForward.length; left++){
+        let right = tempArrForward.length -1 - left;ArrForward[right].data){
+            return false;
+        }console.log(tempArrForward)
+    }
+    queue = newQueue;
+    return true;
+} 
 
 var myQueue = new Queue();
 myQueue.enqueue(new Node("r"));

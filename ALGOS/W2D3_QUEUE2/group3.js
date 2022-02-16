@@ -5,7 +5,6 @@
 class slStack {
     constructor() {
         this.top = null; // this.head, this.end
-        this.length = 0;
     }
 
     // add to top
@@ -16,7 +15,6 @@ class slStack {
             newNode.next = this.top;
             this.top = newNode;
         }
-        this.length++;
     }
 
     // remove from top
@@ -26,8 +24,6 @@ class slStack {
         const removed = this.top; // store previous top
         this.top = this.top.next; // move top pointer
         removed.next = null; // remove pointer from stored node
-        this.length--; // decrement length
-
         return removed; // return the node
     }
 
@@ -51,7 +47,6 @@ class Queue {
     constructor() {
         this.front = null; // sometimes called head "front of the line"
         this.back = null; // sometimes called rear or tail "back of the line"
-        this.length = 0;
     }
 
     enqueue(node) {
@@ -158,7 +153,43 @@ function countStack(stack) {
 // reverseString = "elppa"
 // normalString = "apple"
 
-function isPalindrome(queue) {}
+function isPalindrome(queue) {
+    // edge case quick check if front equals booty 
+    if(queue.back != queue.front){
+        return false;
+    }
+    // create a temp Stack to hold the nodes
+    let tempStack = new slStack();
+    // create two strings to store "data"
+    let stringForward = ""
+    let stringReversed = ""
+    // take nodes out of queue one by one and store in forward string
+    // then put them into a stack
+    while(queue.front){
+        let temp = queue.dequeue();
+        stringForward += temp.data;
+        tempStack.push(temp);
+    }
+    // since we are now taking off the top of the stack the nodes will be
+    //in reverse order
+    // store data in reversed string
+    // enqueue the nodes into the OG queue so we return the data as it was passed in
+    while(tempStack.top){
+        let temp = tempStack.pop();
+        stringReversed += temp.data;
+        queue.enqueue(temp);
+    }
+    // log to check data and see if its manipulated(don't worry its not)
+    console.log(queue);
+
+    // finally compare the two strings to see if they are "equal"
+    if (stringForward == stringReversed){
+        return true
+    }else{
+        return false
+    }
+
+}
 
 
 var myQueue = new Queue();
@@ -169,10 +200,10 @@ myQueue.enqueue(new Node("e"));
 myQueue.enqueue(new Node("c"));
 myQueue.enqueue(new Node("a"));
 myQueue.enqueue(new Node("r"));
-
+console.log(myQueue);
 // QUEUE
 // this.back                            this.front
-//  v                                         v
+//        v                                   v
 // (r) <- (a) <- (c) <- (e) <- (c) <- (a) <- (r) 
 //  ^
 
@@ -182,6 +213,7 @@ myOtherQueue.enqueue(new Node("l"));
 myOtherQueue.enqueue(new Node("p"));
 myOtherQueue.enqueue(new Node("p"));
 myOtherQueue.enqueue(new Node("a"));
+console.log(myOtherQueue);
 
 console.log(isPalindrome(myQueue)); // true
 console.log(isPalindrome(myOtherQueue)); // false

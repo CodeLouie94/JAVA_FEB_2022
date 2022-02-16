@@ -158,7 +158,36 @@ function countStack(stack) {
 // reverseString = "elppa"
 // normalString = "apple"
 
-function isPalindrome(queue) {}
+function isPalindrome(queue) {
+
+    if(queue.front.data != queue.back.data){
+        return false;
+    }
+    else{
+        let str = ""
+        let tempStack = new slStack();
+        let isPalindrome = true;
+        while(queue.front){
+            let dataHeld = queue.dequeue()
+            str += dataHeld.data
+            tempStack.push(dataHeld)
+        }
+        let i = 0;
+        while(tempStack.top){
+            console.log(str[i])
+            stackDataHeld = tempStack.pop();
+            if(stackDataHeld.data != str[i]){
+                isPalindrome = false;
+                queue.enqueue(stackDataHeld);
+            }else{
+            queue.enqueue(stackDataHeld)
+            }
+            i++
+            
+        }
+        return isPalindrome;
+    }
+}
 
 
 var myQueue = new Queue();

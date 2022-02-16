@@ -5,7 +5,6 @@
 class slStack {
     constructor() {
         this.top = null; // this.head, this.end
-        this.length = 0;
     }
 
     // add to top
@@ -16,7 +15,6 @@ class slStack {
             newNode.next = this.top;
             this.top = newNode;
         }
-        this.length++;
     }
 
     // remove from top
@@ -26,8 +24,6 @@ class slStack {
         const removed = this.top; // store previous top
         this.top = this.top.next; // move top pointer
         removed.next = null; // remove pointer from stored node
-        this.length--; // decrement length
-
         return removed; // return the node
     }
 
@@ -51,7 +47,6 @@ class Queue {
     constructor() {
         this.front = null; // sometimes called head "front of the line"
         this.back = null; // sometimes called rear or tail "back of the line"
-        this.length = 0;
     }
 
     enqueue(node) {
@@ -158,7 +153,27 @@ function countStack(stack) {
 // reverseString = "elppa"
 // normalString = "apple"
 
-function isPalindrome(queue) {}
+function isPalindrome(queue) {
+    let temp = new Queue();
+    let reverseString = ""; // d -> "abc"
+    let normalString = ""; // "abc" <- d
+
+    while (!queue.isEmpty()) {
+        let node = queue.dequeue();
+        reverseString = node.data + reverseString;
+        normalString += node.data;
+        temp.enqueue(node);
+    }
+
+    while (!temp.isEmpty()) {
+        queue.enqueue(temp.dequeue());
+    }
+
+    console.log(normalString);
+    console.log(reverseString);
+
+    return reverseString === normalString;
+}
 
 
 var myQueue = new Queue();
@@ -172,7 +187,7 @@ myQueue.enqueue(new Node("r"));
 
 // QUEUE
 // this.back                            this.front
-//  v                                         v
+//        v                                   v
 // (r) <- (a) <- (c) <- (e) <- (c) <- (a) <- (r) 
 //  ^
 

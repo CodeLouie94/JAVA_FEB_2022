@@ -158,7 +158,31 @@ function countStack(stack) {
 // reverseString = "elppa"
 // normalString = "apple"
 
-function isPalindrome(queue) {}
+function isPalindrome(queue) {
+    const arr1=[]                                   //create two empty arr vars
+    const arr2=[]
+    if(queue.front == null){                        //edge case, if .front is null return false bc there are no nodes
+        return false
+    } else{
+        while (queue.front != null){                    
+            let queueOut =  queue.dequeue()         //create a var to hold all dequeue()
+            arr1.push(queueOut.data)                // push queueOut.data into new arr1
+            arr2.unshift(queueOut.data)             //unshift takes queueOut.data and pushes into the front of arr2
+        }                                           //now we have two arrays which we will need to compare data
+        for(let i = 0; i<arr1.length;i++){          //use for loop to go thru arr1
+            if (arr1[i]!=arr2[i])                   // use if check to compare data values in arr1 and arr2, if indexes of arrays dont match return false
+            return false
+        }return true                                //if data values match return true bc we know the values match and we have a palindrome.
+    }
+}
+
+
+
+// function isPalindrome(queue) {
+//     let myStack = new slStack();
+//     myStack.push(queue.dequeue())
+
+// }
 
 
 var myQueue = new Queue();
