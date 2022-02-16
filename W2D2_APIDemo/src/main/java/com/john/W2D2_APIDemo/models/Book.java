@@ -24,7 +24,7 @@ public class Book {
     private Long id;
     
     @NotNull
-    @Size(min = 5, max = 200)
+    @Size(min = 5, max = 200, message = "hey this is required!!!! text!!!")
     private String title;
     
     @NotNull
@@ -37,6 +37,7 @@ public class Book {
     
     @NotNull
     @Min(100)
+//    @Max(1000)
     private Integer numberOfPages;
     
     // This will not allow the createdAt column to be updated after creation
@@ -65,6 +66,8 @@ public class Book {
     protected void onUpdate(){
         this.updatedAt = new Date();
     }
+    
+//    --- GETTERS ANS SETTERS ----
 	public Long getId() {
 		return id;
 	}
