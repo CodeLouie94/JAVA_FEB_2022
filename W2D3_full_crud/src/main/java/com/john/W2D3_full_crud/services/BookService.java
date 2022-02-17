@@ -29,7 +29,7 @@ public class BookService {
     
     // CREATE
     public Book createBook(Book b) {
-    	b.setDescription("intercepted by Service");
+//    	b.setDescription("intercepted by Service");
         return bookRepository.save(b);
     }
     

@@ -14,31 +14,48 @@
 <meta charset="UTF-8">
 <title>index</title>
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" type="text/css" href="/css/main.css">
 <!-- change to match your file/naming structure -->
 <script src="/webjars/jquery/jquery.min.js"></script>
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<h1>index</h1>
-	<hr />
-	<a href="/books/new">create new book</a>
-	<div>
-		<c:forEach items="${books }" var="b">
-		
-			<li><a href="/books/${b.id}">${b.getTitle() }</a> ----- <a
-				href="/books/${b.id }/edit">edit book</a> ----
+	<div class="container">
+		<h1>index</h1>
+		<hr />
+
+		<a href="/books/new">create new book</a>
+
+		<table>
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Title</th>
+					<th>Language</th>
+					<th>pages</th>
+					<th>actions</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<c:forEach items="${books }" var="b">
+					<tr>
+						<td>${b.id }</td>
+						<td><a href="/books/${b.id}">${b.getTitle() }</a></td>
+						<td>${b.language }</td>
+						<td>${b.numberOfPages }</td>
+						<td><a href="/books/${b.id }/edit">edit book</a>
+
+							<form action="/books/${b.id}/delete" method="post" class="form-inline">
+								<input type="hidden" name="_method" value="delete"> <input
+									class="" type="submit" value="Delete">
+							</form></td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
 
 
-				
-				<form action="/books/${b.id}/delete" method="post">
-					<input type="hidden" name="_method" value="delete"> <input
-						type="submit" value="Delete">
-				</form>
-				
-				</li>
-
-		</c:forEach>
 
 	</div>
 </body>

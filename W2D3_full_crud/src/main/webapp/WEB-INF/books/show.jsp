@@ -20,8 +20,16 @@
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<h1>show book</h1>
-	<p>title: ${oneBook.title }</p>
-	<p>pages: ${oneBook.getNumberOfPages() }</p>
+	<div class="container">
+		<h1>show book</h1>
+		<hr />
+		<p>
+		</p>
+		<a href="/books">/books</a>
+		<p>id: ${oneBook.id }</p>
+		<p>title: ${oneBook.title }</p>
+		<p>description: ${oneBook.description}</p>
+		<p>pages: ${oneBook.getNumberOfPages() }</p>
+	</div>
 </body>
 </html>
