@@ -177,7 +177,25 @@ function countStack(stack) {
 // using only one extra stack for storage, check if a given stack is sorted
 // return the stack back to it's original order when you are done
 // assume node.data are integers
-function isStackSorted(stack) {}
+function isStackSorted(stack) {
+    var tempStack = new slStack();
+    var isSorted = true;
+    var lastValue = -Infinity;
+    while (!stack.isEmpty()) {
+        tempNode = stack.pop();
+        if (tempNode.data > lastValue) {
+            lastValue = tempNode.data;
+        }
+        else {
+            isSorted = false;
+        }
+        tempStack.push(tempNode);
+    }
+    while (!tempStack.isEmpty()) {
+        stack.push(tempStack.pop());
+    }
+    return isSorted;
+}
 
 // 1. instantiate a stack
 // 2. add a few nodes to the stack

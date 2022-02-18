@@ -177,7 +177,39 @@ function countStack(stack) {
 // using only one extra stack for storage, check if a given stack is sorted
 // return the stack back to it's original order when you are done
 // assume node.data are integers
-function isStackSorted(stack) {}
+function isStackSorted(stack) {
+    // check if stack is not empty
+    // pop all elements from the original stack and store popped elements in temp variable
+    if (stack.isEmpty()) return null;
+    let tempStack = new slStack();
+    let tempNode;
+    let temp = null;
+
+    console.log(stack);
+    while(stack.top){
+        tempNode = stack.pop()
+        if (temp == null ){
+            temp = tempNode.data;
+            tempStack.push(tempNode)
+        }
+        else if (tempNode.data >= temp){
+            while(tempStack.top){
+                stack.push(tempStack.pop());
+            }
+            console.log(stack);
+            return false
+        }else{
+            temp = tempNode.data;
+            tempStack.push(tempNode);
+        }
+    }
+    //return stack to OG state
+    while(tempStack.top){
+        stack.push(tempStack.pop());
+        }
+    console.log(stack);
+    return true
+    };
 
 // 1. instantiate a stack
 // 2. add a few nodes to the stack
@@ -186,6 +218,9 @@ function isStackSorted(stack) {}
 var pringlesCan = new slStack()
 pringlesCan.push(new Node(220))
 pringlesCan.push(new Node(133))
-pringlesCan.push(new Node(44))
+pringlesCan.push(new Node(57))
+pringlesCan.push(new Node(37))
 pringlesCan.push(new Node(15))
+
+console.log(pringlesCan);
 console.log(isStackSorted(pringlesCan));
