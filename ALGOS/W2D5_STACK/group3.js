@@ -31,7 +31,7 @@ class slStack {
     reverse() {
         let tempQue = new Queue()
           while (!this.isEmpty()) {
-        temp.enqueue(this.pop())
+        tempQue.enqueue(this.pop())
     }
     while(!tempQue.isEmpty()){
         this.push(tempQue.dequeue())
