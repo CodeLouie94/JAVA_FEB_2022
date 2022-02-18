@@ -1,0 +1,18 @@
+STS project setup
+
+1. new -> Spring Starter Project
+2. pom.xml -> dependencies
+3. application.properties
+4. MySQL -> create schema
+ >>> TEST APP
+ 
+5. create packages 
+	com.yourname.assingment.(models, repos, services, controllers)
+6 -> MODEL
+	-> getters and setters
+ >>> TEST APP
+ >> check MySQL
+ 
+7. REPO -> Service -> Controller
+ >>> TEST APP
+	- test early and test often!
