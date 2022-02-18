@@ -1,0 +1,84 @@
+Today: 2 weeks and 2 days!👀
+
+-- TIPS --
+CREATE A BOILER PLATE PROJECT
+	-setup pom.xml, application properties, login-reg, MySQL db ready with a User
+	-User model with name, email, password, confirm (transient)
+	
+Look at wireframe (PSEUDOCODE) (~10 mins writing out features and relationships)
+👉 Ask Clarification questions
+
+EXAM is emulating a take home challege
+The exam is writen as a real life example of a potential employeer giving you a timed excersise to test your knowledge
+
+
+1. Take 100% of the exam time! (4.5 hours + 30 mins)
+DO NOT DROP EARLY - take breaks
+
+2. Don't panic!
+- the only risk here is for you to find and expose a weakness to study and correct! 🙂
+
+3. Don't watch the clock ⏳
+- set alarms for mid way - last hour and last 20 mins
+
+4. Start with what you know
+some black-belt features may require to drop the db and do a different relationships
+
+5. Don't start the exam until you have your environment setup and ready
+(boiler plate)
+
+6. use exam instructions as checklist and follow the yellow sticky notes
+- double check before submitting
+- don't overthink features - do only what the exam asks
+
+7. use the platform - 100% of the RED BELT features are IN the platform.
+
+8. If you have trouble submitting - let me know
+
+9. Don't go over time, submit anyway I will still code review it with you.
+- ALWAYS submit what you have
+- not submiting is automatic FAIL
+
+10. Even if you are feeling nervous - Take the exam anyway as an assignment and finish it
+
+11. You don't have to submit a video*
+
+12. STAY IN ZOOM THROUGHOUT THE ENTIRE TIME OF THE EXAM (even if you are not taking an exam)
+- DON'T EXIT ZOOM 
+- DON'T JOIN ANOTHER DISCORD SERVER 
+-> VOID THE EXAM
+
+13. Join lecture room so I can assign you to an exam room
+9:00 - 10:00
+
+14. DO NOT ENTER a TA HELP CHANNEL
+-> VOID THE EXAM
+
+15. Don't cheat. PERIOD
+- it's very easy to catch cheaters
+- code is like a fingerprint
+- you need to feel comfortable about what you do and do not know to survive an engineering role
+
+NOT ON THE EXAM:
+- Spring Security
+
+-= REQUIREMENTS =- 
+
+RED-BELT
+- LOGIN REG - using BCrypt (Do not use Spring Security)
+- CRUD
+	validations and diplay error messages
+	display all / one
+	dashboard + route guard
+	UPDATE - prepopulate fields
+		validations
+- Relationships: at LEAST one 1:M
+- conditional rendering c:if c:choose... etc..
+
+BLACK BELT
+- M:M + 1:M
+- deploy within 24 hours
+- screen shot your aws instance running on EC2
+
+you got this!
+💪😎
