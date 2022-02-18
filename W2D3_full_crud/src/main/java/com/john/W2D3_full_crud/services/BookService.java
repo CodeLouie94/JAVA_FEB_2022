@@ -45,7 +45,6 @@ public class BookService {
     }
     
 //    UPDATE
-    // CREATE
     public Book updateBook(Book b) {
     	System.out.println("update service");
         return bookRepository.save(b);

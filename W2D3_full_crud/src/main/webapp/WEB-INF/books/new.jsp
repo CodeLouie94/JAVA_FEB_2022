@@ -25,10 +25,10 @@
 		<hr />
 
 		<%-- ${allBooks } --%>
+		<%-- ${allLibs } --%>
 
 		<c:forEach items="${allBooks }" var="b">
-			<li>${b.getTitle() }</li>
-
+			<li>${b.getTitle() } - ${b.library.name } - ${b.getLibrary().getBooks().size() }</li>
 		</c:forEach>
 
 		<hr />
@@ -54,9 +54,20 @@
 				<form:errors path="numberOfPages" />
 				<form:input type="number" path="numberOfPages" />
 			</p>
+			<form:select path="library">
+				<c:forEach items="${allLibs }" var="lib">
+					<form:option value="${lib }">
+						${lib.getName() }
+				
+				</form:option>
+				</c:forEach>
+			</form:select>
+
+
 			<input type="submit" value="Submit" />
 		</form:form>
-
+<%-- 		<c:out value="${test }"/>
+	${test } --%>
 	</div>
 </body>
 </html>

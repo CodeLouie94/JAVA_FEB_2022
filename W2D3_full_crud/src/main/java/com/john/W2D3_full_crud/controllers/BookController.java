@@ -12,18 +12,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.john.W2D3_full_crud.models.Book;
+import com.john.W2D3_full_crud.models.Library;
 import com.john.W2D3_full_crud.services.BookService;
+import com.john.W2D3_full_crud.services.LibService;
 
 @Controller
 public class BookController {
 
 	@Autowired
 	private BookService bookService;
+	@Autowired
+	private LibService libService;
 
 	@RequestMapping("/")
 	public String index() {
@@ -55,17 +58,23 @@ public class BookController {
 //    	return "/books/new.jsp";
 //    }
 
-//	CREATE - JSP ----------------------
+//	CREATE BOOK - JSP ----------------------
 	@GetMapping("/books/new")
 	public String newBook(@ModelAttribute("book") Book book, Model model) {
 		List<Book> allBooks = bookService.allBooks();
 		model.addAttribute("allBooks", allBooks);
+		
+		List<Library> allLibs = libService.allLibraries();
+		model.addAttribute("allLibs", allLibs);
+		
+		model.addAttribute("test", "<h1>hello</h1>");
 		return "/books/new.jsp";
 	}
 
 //    CREATE METHOD -------------------
 	@PostMapping("/books")
-	public String create(@Valid @ModelAttribute("book") Book book, BindingResult result, Model model) {
+	public String create(@Valid @ModelAttribute("book") Book book, 
+				BindingResult result, Model model) {
 		if (result.hasErrors()) {
 			List<Book> allBooks = bookService.allBooks();
 			model.addAttribute("allBooks", allBooks);
@@ -104,5 +113,28 @@ public class BookController {
 		bookService.deleteBook(id);
 		return "redirect:/books";
 	}
+	
+	
+//	============= LIBRARY ===============
+//	render create new library
+	@GetMapping("/library/new")
+	public String createLibraryPage(@ModelAttribute("library") Library library, Model model) {
+		List<Library> allLibs = libService.allLibraries();
+		model.addAttribute("allLibs", allLibs);
+		return "/library/new.jsp";
+	}
+	
+	@PostMapping("/library")
+	public String libraryMethodCreate(@Valid @ModelAttribute("library") Library library, 
+									BindingResult result) {
+		if (result.hasErrors()) {
+			return "/library/new.jsp";
+		} else {
+//			save it to the DB!
+			libService.createLibrary(library);
+			return "redirect:/library/new";
+		}
+	}
 
+	
 }
