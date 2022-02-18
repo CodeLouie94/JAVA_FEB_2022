@@ -1,5 +1,8 @@
 Today: 2 weeks and 2 days!👀
 
+Exam is open book, platform / - not open GitHub! 👀⚠
+
+
 -- TIPS --
 CREATE A BOILER PLATE PROJECT
 	-setup pom.xml, application properties, login-reg, MySQL db ready with a User
@@ -58,9 +61,33 @@ some black-belt features may require to drop the db and do a different relations
 - it's very easy to catch cheaters
 - code is like a fingerprint
 - you need to feel comfortable about what you do and do not know to survive an engineering role
+- you can't cheat your way in keeping a job!
+
+16 ASKING FOR HELP
+ - this is an EXAM ¯\_(ツ)_/¯
+	-> what route is it not working on?
+	-> what method is it in?
+	-> what obj is coming back?
+ - if you are stuck on a bug for > 20 mins I may or may not POINT you to a direction
+ - Ping in our class DISCORD COHORT CHANNEL. DO NOT DM OR RAISE HAND ON ZOOM
+
+17. GETTING GRADED
+ - double and triple check that you met ALL REQUIREMENTS. 
+ - test all routes / features / all validations
+ - Ping in our class DISCORD COHORT CHANNEL
+ 
+18. After finishing an exam: 
+	-> read PROJECT WEEK STACK
+	-> start: 
+		1. wireframes
+		2. user stories
+		3. create timeline
+		4. start clickable prototype
+	-> Planning Meeting for Friday -> present in class wireframes/ user stories / timeline
 
 NOT ON THE EXAM:
 - Spring Security
+- outside APIs
 
 -= REQUIREMENTS =- 
 
