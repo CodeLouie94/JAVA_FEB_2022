@@ -28,11 +28,11 @@ public class BookController {
 	@Autowired
 	private LibService libService;
 
-	@RequestMapping("/")
-	public String index() {
-		System.out.println("index");
-		return "redirect:/books";
-	}
+//	@RequestMapping("/")
+//	public String index() {
+//		System.out.println("index");
+//		return "redirect:/books";
+//	}
 
 	@RequestMapping("/books")
 	public String index(Model model) {
