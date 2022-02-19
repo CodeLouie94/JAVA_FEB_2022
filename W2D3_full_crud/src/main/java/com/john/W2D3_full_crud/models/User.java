@@ -1,9 +1,13 @@
 package com.john.W2D3_full_crud.models;
 
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.Email;
@@ -34,6 +38,11 @@ public class User {
     @NotEmpty(message="Confirm Password is required!")
     @Size(min=8, max=128, message="Confirm Password must be between 8 and 128 characters")
     private String confirm;
+    
+//    1:M 
+    @OneToMany(mappedBy = "author", fetch = FetchType.LAZY)
+    private List<Book> books;
+//    ==== DON'T FORGET GETTER AND SETTERS ====
   
 //    MUST HAVE EMPTY CONSTRUCTOR
     public User() {}
@@ -80,6 +89,18 @@ public class User {
 
 	public void setConfirm(String confirm) {
 		this.confirm = confirm;
+	}
+
+
+
+	public List<Book> getBooks() {
+		return books;
+	}
+
+
+
+	public void setBooks(List<Book> books) {
+		this.books = books;
 	}
     
 

@@ -43,7 +43,11 @@ public class Book {
 //    @Max(1000)
     private Integer numberOfPages;
     
-    
+//    M:1
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="user_id")
+    private User author;
+//    ==== DON'T FORGET GETTER AND SETTERS ====
     
 //    BOOK
     
@@ -128,6 +132,14 @@ public class Book {
 
 	public void setLibrary(Library library) {
 		this.library = library;
+	}
+
+	public User getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(User author) {
+		this.author = author;
 	}
     
 	

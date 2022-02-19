@@ -23,16 +23,18 @@
 	<div class="container">
 		<h1>new book</h1>
 		<hr />
-
+		<h4>${thisLoggedInUser.id } - ${thisLoggedInUser.userName }</h4>
 		<%-- ${allBooks } --%>
 		<%-- ${allLibs } --%>
 
 		<c:forEach items="${allBooks }" var="b">
-			<li>${b.getTitle() } - ${b.library.name } - ${b.getLibrary().getBooks().size() }</li>
+			<li>${b.getTitle() }- ${b.library.name } -
+				${b.getLibrary().getBooks().size() }</li>
 		</c:forEach>
 
 		<hr />
 		<form:form action="/books" method="post" modelAttribute="book">
+			<form:input type="hidden" path="author" value="${thisLoggedInUser.id }"/>
 			<p>
 				<form:label path="title">Title</form:label>
 				<form:errors path="title" />
@@ -66,7 +68,7 @@
 
 			<input type="submit" value="Submit" />
 		</form:form>
-<%-- 		<c:out value="${test }"/>
+		<%-- 		<c:out value="${test }"/>
 	${test } --%>
 	</div>
 </body>

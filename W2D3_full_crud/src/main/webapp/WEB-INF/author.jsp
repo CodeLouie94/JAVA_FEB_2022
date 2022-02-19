@@ -18,14 +18,19 @@
     <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-   <div class="container">
-   <h1>Welcome ${thisUser.getUserName() }</h1>
-   <h4> <a href="/books/new"> create your book</a></h4>
-   
-   <p>
-   	<a href="/logout">logout</a>
-   </p>
-   
-   </div>
+	<div class="container">
+
+		<h1>Author's books</h1>
+		<p>${thisLoggedInUser.id } -- ${thisLoggedInUser.userName }</p>
+
+	<c:forEach items="${thisLoggedInUser.books }" var="b">
+		<li>${b.title }</li>
+	</c:forEach>
+	
+
+
+
+	</div>
+
 </body>
 </html>
