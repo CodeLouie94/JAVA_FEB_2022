@@ -1,0 +1,56 @@
+@charset "ISO-8859-1";
+
+/* test */
+/* * {
+	outline: 1px dotted red;
+} */
+
+/* body {
+	background-color: #fff;
+} */
+
+.heading-h1 {
+	color: blue;
+}
+
+.login-reg-main {
+	padding: 1rem;
+	width: 60%;
+}
+
+.border-round {
+	/* border: 1px solid grey; */
+	border-radius: 10px;
+	padding: 1rem;
+	background-color: #ededed;
+	box-shadow: 2px 2px 20px #8D9797;
+}
+
+.btn-link {
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  /*optional*/
+  font-family: arial, sans-serif;
+  /*input has OS specific font-family*/
+  color: #069;
+  color: red;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.give-me-space-up-down {
+	margin: 2rem 0;
+}
+
+th {
+	border: 2px solid grey;
+}
+td { 
+	border: 1px solid grey;
+	padding: 0 5px;
+}
+
+td:last-child {
+	background-color: rgb(235, 235, 235);	
+}
