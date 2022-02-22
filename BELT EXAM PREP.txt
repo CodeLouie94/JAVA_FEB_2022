@@ -37,6 +37,8 @@ some black-belt features may require to drop the db and do a different relations
 7. use the platform - 100% of the RED BELT features are IN the platform.
 
 8. If you have trouble submitting - let me know
+	send zip -> jmisirlakis@codingdojo.com
+			 -> DM me on Discord
 
 9. Don't go over time, submit anyway I will still code review it with you.
 - ALWAYS submit what you have
@@ -67,9 +69,11 @@ some black-belt features may require to drop the db and do a different relations
  - this is an EXAM ¯\_(ツ)_/¯
 	-> what route is it not working on?
 	-> what method is it in?
-	-> what obj is coming back?
+	-> what obj is/not coming back?
  - if you are stuck on a bug for > 20 mins I may or may not POINT you to a direction
- - Ping in our class DISCORD COHORT CHANNEL. DO NOT DM OR RAISE HAND ON ZOOM
+ - Ping in our class/Heidi's DISCORD COHORT CHANNEL. 
+ DO NOT DM OR RAISE HAND ON ZOOM
+ 👉 screen share BEFORE asking for help - to speed up the process!
 
 17. GETTING GRADED
  - double and triple check that you met ALL REQUIREMENTS. 
@@ -103,6 +107,8 @@ RED-BELT
 - conditional rendering c:if c:choose... etc..
 
 BLACK BELT
+¯\_(ツ)_/¯
+- everything on the RED-BELT+
 - M:M + 1:M
 - deploy within 24 hours
 - screen shot your aws instance running on EC2
