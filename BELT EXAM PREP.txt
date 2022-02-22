@@ -37,6 +37,7 @@ some black-belt features may require to drop the db and do a different relations
 7. use the platform - 100% of the RED BELT features are IN the platform.
 
 8. If you have trouble submitting - let me know
+	you can only submit one (1) time!
 	send zip -> jmisirlakis@codingdojo.com
 			 -> DM me on Discord
 
