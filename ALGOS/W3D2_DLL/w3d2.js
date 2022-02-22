@@ -19,10 +19,36 @@ class DLList {
     // push to head
     // myDll.addHead(new DLLNode(33));
     // push to head
-    addHead(node) { }
+    addHead(node) {
+        if (!this.head) { // empty list
+            this.head = node;
+            this.tail = node;
+        } else {
+            this.head.prev = node;
+            node.next = this.head;
+            this.head = node;
+
+            // this.tail.next = node;
+            // node.prev = this.tail;
+            // this.tail = node;
+        }
+    }
 
     // pop from tail
-    removeTail() { }
+    removeTail() {
+        if (this.head == null) return; // empty list
+        if (this.head === this.tail) { // one node
+            var temp = this.tail; // set a temp
+            this.head = null; // disconnect the head
+            this.tail = null; // disconnect the tail
+            return temp;
+        }
+        var temp = this.tail; // set a temp
+        this.tail = tail.prev; // move the tail back
+        this.tail.next = null; // null out the new tail's next
+        temp.prev = null; // null out the temp's prev
+        return temp;
+    }
 
     // return is empty
     isEmpty() {

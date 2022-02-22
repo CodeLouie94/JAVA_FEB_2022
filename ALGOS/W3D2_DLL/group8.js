@@ -14,23 +14,61 @@ class DLList {
         this.tail = null;
     }
 
-     // == Main Methods ==
+    // == Main Methods ==
 
     // push to head
     // myDll.addHead(new DLLNode(33));
     // push to head
-    addHead(node) { }
+    addHead(node) {
 
+        if (this.isEmpty()) {
+            this.head = node;
+            this.tail = node;
+        }
+        else {
+            this.head.previous = node;
+            node.next = this.head;
+            this.head = node;
+
+        }
+
+
+    }
+
+    // printValuesForward(){
+    //     let current=this.head;
+    //     while(current !=null){
+    //         console.log(current.data);
+    //         current=current.next;
+    //     }
+
+
+    // }
+
+    size(){
+        let current=this.head;
+        let count=0
+        while(current !=null){
+            count++;
+            current=current.next;
+        }
+        return count;
+
+
+    }
     // pop from tail
-    removeTail() { }
+    removeTail() { 
+        let nodeToPop=this.tail;
+        this.tail=this.tail.previous;
+        this.tail.next=null;
+        return nodeToPop;
+    }
 
     // return is empty
     isEmpty() {
         return this.head === null;
     }
 
-    // return length
-    size() { }
 
     // == Bonus Methods, just inverted versions of the first set ==
 
@@ -40,6 +78,22 @@ class DLList {
     // pop from head
     removeHead() { }
 }
+
+
+let newDLL = new DLList();
+
+
+newDLL.addHead(new DLLNode(44));
+newDLL.addHead(new DLLNode(33));
+newDLL.addHead(new DLLNode(22));
+newDLL.addHead(new DLLNode(11));
+console.log(newDLL.size())
+console.log(newDLL);
+// newDLL.printValuesForward();
+console.log(newDLL.removeTail());
+console.log(newDLL.size())
+console.log(newDLL);
+
 // Remember to instantiate the DLL!!
 // add a few nodes ex. // myDll.addHead(new DLLNode(33));
 // print the DLL -> console.log(myDll) did the nodes get added?

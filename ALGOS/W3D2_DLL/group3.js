@@ -18,11 +18,33 @@ class DLList {
 
     // push to head
     // myDll.addHead(new DLLNode(33));
-    // push to head
     addHead(node) { }
+    if (this.isEmpty()) {
+      this.head = node;
+      this.tail = node;
+    } else {
+      node.next = this.head;
+      this.head.prev = node;
+      this.head = node;
+    }
 
     // pop from tail
-    removeTail() { }
+    removeTail() {
+    if (this.head !== null) {
+      if(this.tail.prev === null) {
+        let tempNode = this.tail;
+        this.head = null;
+        this.tail = null;
+        return tempNode;
+      } 
+        let temp = this.tail
+        this.tail = temp.prev
+        this.tail.next = null;
+        temp.prev = null;        
+        return temp;
+    }
+      
+    }
 
     // return is empty
     isEmpty() {
@@ -30,15 +52,49 @@ class DLList {
     }
 
     // return length
-    size() { }
+    size() {
+      if (this.head === null) {
+        return 0
+      }
+      let count = 0;
+      let runner = this.head;
+      while (runner !== this.tail) {
+        count ++
+          runner = runner.next
+      }
+      return count;
+    }
 
     // == Bonus Methods, just inverted versions of the first set ==
 
     // push to tail
-    addTail(node) { }
+    addTail(node) {
+      if (this.head === null) {
+      this.head = node;
+      this.tail = node;
+        } else {
+        node.prev = this.tail;
+        this.tail.next = node;
+        this.tail = node
+        }
+      
+    }
 
     // pop from head
-    removeHead() { }
+    removeHead() {
+        if (this.head !== null) {
+      if(this.head.next === null) {
+        let tempNode = this.head;
+        this.head = null;
+        this.tail = null;
+        return tempNode;
+        }
+          let temp = this.head;
+          this.head = temp.next;
+          this.head.prev = null;
+          temp.prev = null;
+          return temp;
+    }
 }
 // Remember to instantiate the DLL!!
 // add a few nodes ex. // myDll.addHead(new DLLNode(33));

@@ -19,10 +19,29 @@ class DLList {
     // push to head
     // myDll.addHead(new DLLNode(33));
     // push to head
-    addHead(node) { }
+    addHead(node) { 
+        if(this.isEmpty()){
+            this.head = node;
+            this.tail = node;
+        } else {
+            node.next = this.head;
+            this.head.prev = node;
+            this.head = node;
+        }
+        return this;
+    }
 
     // pop from tail
-    removeTail() { }
+    removeTail() { 
+        if(this.isEmpty()){
+            return null;
+        }
+        let tempNode = this.tail;
+        this.tail = this.tail.prev;
+        this.tail.next = null;
+        tempNode.prev = null;
+        return tempNode;
+    }
 
     // return is empty
     isEmpty() {
@@ -30,18 +49,56 @@ class DLList {
     }
 
     // return length
-    size() { }
+    size() { 
+        let count = 0;
+        let runner = this.head;
+        while(runner){
+            count ++;
+            runner = runner.next;
+        }
+        return count;
+    }
 
     // == Bonus Methods, just inverted versions of the first set ==
 
     // push to tail
-    addTail(node) { }
+    addTail(node) { 
+        if(this.isEmpty()){
+            this.tail = node;
+            this.head = node;
+        } else {
+            node.prev = this.tail;
+            this.tail.next = node;
+            this.tail = node;
+        }
+        return this;
+    }
 
     // pop from head
-    removeHead() { }
+    removeHead() { 
+        if(this.isEmpty()){
+            return null;
+        }
+        let tempNode = this.head;
+        this.head = this.head.next;
+        this.head.prev = null;
+        tempNode.next = null;
+        return tempNode;
+    }
 }
+
 // Remember to instantiate the DLL!!
 // add a few nodes ex. // myDll.addHead(new DLLNode(33));
 // print the DLL -> console.log(myDll) did the nodes get added?
 // remove a few nodes from tail
 // print the DLL -> did the correct nodes get removed?
+let dll = new DLList();
+console.log("-------- Add Head/Add Tail --------");
+dll.addHead(new DLLNode(1)).addTail(new DLLNode(3)).addHead(new DLLNode(2)).addTail(new DLLNode(4));
+console.log(dll);
+console.log("Size:", dll.size());
+console.log("----- Remove Head/Remove Tail -----");
+console.log(dll.removeHead());
+console.log(dll.removeTail());
+console.log(dll);
+console.log("Size:", dll.size());
