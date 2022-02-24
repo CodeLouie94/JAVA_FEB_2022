@@ -20,10 +20,48 @@ class DLList {
     // target is the value of a node in the list
     // consider the edge case where you may have to move the head
     // consider the edge case where you do not find the target
-    prepend(target, node) { }
+    prepend(target, node) { 
+        let walker = this.head;
+        let moonWalker = this.tail;
+        let foundNode = null;
+        while(walker.prev != moonWalker && walker != moonWalker && foundNode == null){
+            if(walker.data == target ){
+              foundNode = walker
+            }
+            if(moonWalker.data == target){
+                foundNode = moonWalker;
+            }
+            walker = walker.next
+            moonWalker = moonWalker.prev
+        }
+        if (foundNode != null){
+            node.next = foundNode;
+            node.prev = foundNode.prev;
+            foundNode.prev.next = node;
+            foundNode.prev = node;
+            return "inserted, prependerated, got it, it worked"
+        }else{
+            return "pending prependering";
+        }
+    }
 
     // return true or false if a node exists with data === val
-    exists(val) { }
+    exists(val) {
+        let walker = this.head;
+        let moonWalker = this.tail;
+        while(walker.prev != moonWalker && walker != moonWalker){
+            if(walker.data == val || moonWalker.data == val){
+                return true
+            }
+            walker = walker.next
+            moonWalker = moonWalker.prev
+            if(walker == moonWalker && walker.data === val){
+                return true
+            }
+            
+        }
+        return false
+    }
 
     // push to head
     addHead(node) {
@@ -67,6 +105,23 @@ class DLList {
     removeHead() { }
 }
 
+let newList = new DLList()
+let node1 = new DLLNode(44)
+let node2 = new DLLNode(33)
+let node3 = new DLLNode(22)
+let node4 = new DLLNode(11)
+let node5 = new DLLNode(55)
+
+
+newList.addHead(node1)
+newList.addHead(node2)
+newList.addHead(node3)
+newList.addHead(node4)
+
+
+
+console.log(newList.prepend(33, node5))
+console.log(newList.exists(55))
 // instantiate the DLL
 // add a few nodes
 // test!

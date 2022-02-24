@@ -16,14 +16,44 @@ class DLList {
 
     // == Main Methods ==
 
- // add node before target
+    // add node before target
     // target is the value of a node in the list
     // consider the edge case where you may have to move the head
     // consider the edge case where you do not find the target
-    prepend(target, node) { }
+    prepend(target, node) {
+        let runner = this.head;
+        if (this.head && target === this.head.data) {
+            node.next = this.head;
+            this.head.prev = node;
+            this.head = node;
+            return true;
+        }
+        while (runner) {
+            if (runner.data === target) {
+                node.prev = runner.prev;
+                runner.prev.next = node;
+                runner.prev = node;
+                node.next = runner;
+                return true;
+            }
+            runner = runner.next;
+        }
+        return false;
+    }
 
     // return true or false if a node exists with data === val
-    exists(val) { }
+    exists(val) {
+        let runnerFront = this.head;
+        let runnerBack = this.tail;
+        while (runnerFront != runnerBack) {
+            if (runnerFront.data === val || runnerBack.data === val) {
+                return true;
+            }
+            runnerFront = runnerFront.next;
+            runnerBack = runnerBack.prev;
+        }
+        return false;
+    }
 
     // push to head
     addHead(node) {
@@ -53,6 +83,14 @@ class DLList {
         return temp;
     }
 
+    print() {
+        let runner = this.head;
+        while (runner) {
+            console.log(runner.data)
+            runner = runner.next;
+        }
+    }
+
     // return is empty
     isEmpty() {
         return this.head === null;
@@ -70,3 +108,15 @@ class DLList {
 // instantiate the DLL
 // add a few nodes
 // test!
+
+let myDLL = new DLList();
+let newDLL = new DLList();
+
+myDLL.addHead(new DLLNode(5));
+myDLL.addHead(new DLLNode(4));
+myDLL.addHead(new DLLNode(3));
+myDLL.addHead(new DLLNode(2));
+myDLL.addHead(new DLLNode(1));
+
+myDLL.prepend(3, new DLLNode(8000));
+console.log(newDLL.exists(1));

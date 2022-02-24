@@ -23,7 +23,114 @@ class DLList {
     prepend(target, node) { }
 
     // return true or false if a node exists with data === val
-    exists(val) { }
+    exists(val) {
+       let runner = this.head
+       while (runner){
+       if (runner == data) ret
+
+
+
+leerunner = runner.next
+    
+
+    return false
+    
+
+    return false
+    
+
+    return false
+    
+
+    return false
+    
+
+    return false
+    
+
+    return false
+    
+
+    return false
+    
+
+    return false
+    
+
+    return false
+    
+
+    return false
+    
+
+    return false
+    
+
+    return false
+    
+
+    
+    
+
+    
+    
+
+    
+        
+
+
+    
+
+
+    
+
+
+
+leerunner = runner.next
+
+
+leerunner = runner.next
+
+leerunner = runner.next
+
+leerunner = runner.next
+
+leerunner = runner.next
+
+leerunner = runner.next
+
+leerunner = runner.next
+
+leerunner = runner.next
+
+leerunner = 
+}        eurt nr
+       eurt nr
+       eurt nr
+       eurt nr
+       eurt nr
+       eurt nr
+       eurt nr
+       eurt nr
+       eurt nr
+       eurt nr
+       eurt nr
+       eurt nr
+       eurt nr
+       eurt nr
+       eurt nr
+       eurt nr
+       eurt nr
+       eurt nr
+       eurt nr
+
+       eurt nr
+eurt nr
+eurt nr
+eurt nr
+r
+
+     }
 
     // push to head
     addHead(node) {
@@ -70,3 +177,11 @@ class DLList {
 // instantiate the DLL
 // add a few nodes
 // test!
+
+
+let newDLL = new DLList()
+newDLL.addHead(new DLLNode(11) )
+newDLL.addHead(new DLLNode(22) )
+newDLL.addHead(new DLLNode(33) )
+newDLL.addHead(new DLLNode(44) )
+console.log(newDLL)

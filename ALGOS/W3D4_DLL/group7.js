@@ -16,11 +16,34 @@ class DLList {
 
     // == Main Methods ==
 
- // add node before target
+    // add node before target
     // target is the value of a node in the list
     // consider the edge case where you may have to move the head
     // consider the edge case where you do not find the target
-    prepend(target, node) { }
+    prepend(target, node) {
+        if (this.head == null && this.tail == null) {
+            return false;
+        } else {
+            if (this.head.data == target) {
+                this.head.prev = node;
+                node.next = this.head;
+                this.head = node;
+                return true;
+            }
+            let runner = this.head;
+            while (runner != null) {
+                if (runner.data == target) {
+                    runner.prev.next = node;
+                    node.next = runner;
+                    node.prev = runner.prev;
+                    runner.prev = node;
+                    return true;
+                } runner = runner.next;
+            }
+            return false;
+        }
+    }
+
 
     // return true or false if a node exists with data === val
     exists(val) { }
@@ -70,3 +93,10 @@ class DLList {
 // instantiate the DLL
 // add a few nodes
 // test!
+let DLL1 = new DLList();
+DLL1.addHead(new DLLNode(51));
+DLL1.addHead(new DLLNode(52));
+DLL1.addHead(new DLLNode(53));
+DLL1.addHead(new DLLNode(55));
+DLL1.prepend(53, new DLLNode(54));
+console.log(DLL1);

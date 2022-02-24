@@ -20,7 +20,19 @@ class DLList {
     // target is the value of a node in the list
     // consider the edge case where you may have to move the head
     // consider the edge case where you do not find the target
-    prepend(target, node) { }
+    prepend(target, node) {
+        let temp = null
+        let runner=this.hea d   
+    while (runner.data != target) {
+    runner = runner.next
+    }
+}
+
+
+
+
+
+
 
     // return true or false if a node exists with data === val
     exists(val) { }

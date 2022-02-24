@@ -1,4 +1,4 @@
-// DLLNodes have a .next and .prev
+/// DLLNodes have a .next and .prev
 class DLLNode {
     constructor(data) {
         this.data = data;
@@ -20,7 +20,25 @@ class DLList {
     // target is the value of a node in the list
     // consider the edge case where you may have to move the head
     // consider the edge case where you do not find the target
-    prepend(target, node) { }
+    prepend(target, node) { 
+        let runner = this.head;
+        let tempRunner = null;
+        while(runner) {
+            if(runner.next == null){
+            return;
+            
+        } 
+        else if (runner.data == target) {
+            tempRunner = runner;
+            runner = node;
+            runner.next = tempRunner;
+            runner.prev = tempRunner.prev;
+            tempRunner.prev = runner;
+        }
+
+        }
+
+    }
 
     // return true or false if a node exists with data === val
     exists(val) { }
@@ -70,3 +88,16 @@ class DLList {
 // instantiate the DLL
 // add a few nodes
 // test!
+
+var list = new DLList
+var node1 = new DLLNode(1)
+var node2 = new DLLNode(2)
+var node3 = new DLLNode(3)
+var node4 = new DLLNode(4)
+var node5 = new DLLNode(5)
+
+list.addHead(node1)
+list.addHead(node2)
+list.addHead(node3)
+list.addHead(node4)
+console.log(list)
