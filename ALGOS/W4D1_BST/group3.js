@@ -42,20 +42,7 @@ class BST {
             |     pass a changed current as we call the function again
             |       |
             v       v                       */
-    insert(node, current) {
-        // check if node val is > or < current's val
-        // if less than
-        // check if current.left is null
-        // THEN insert node
-        // exit / return
-        // else 
-        // reassign current
-        // RECURSE - call the function again!
-        // return this.insert(node, new_current)
-        // -------------
-        // default current to root if no current exists
-        
-    };
+    insert(node, current) { };
 };
 
 
