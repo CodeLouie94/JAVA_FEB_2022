@@ -19,7 +19,22 @@ class DLList {
     // return true or false if the current linked list is a palindrome
     // a palindrome is a string of characters equal to itself when reversed
     // assume your node.data are all numbers or lowercase chars
-    isPalindrome() { }
+    isPalindrome() {
+        if (this.isEmpty){
+            return false
+        }
+        let runnerHead = this.head
+        let runnerTail = this.tail
+
+        while (runnerHead != runnerTail && runnerTail.next != runnerHead  ) {
+            if(runnerHead.data != runnerTail.data){
+                return false
+            }
+            runnerHead = runnerHead.next
+            runnerTail = runnerTail.prev
+        }
+        return true
+     }
 
     // reverse a doubly linked list in place
     reverse() { }
@@ -30,7 +45,52 @@ class DLList {
     // what if the target val is the head?
     // what if the target val is the tail?
     // what if the target val is the only node in the list?
-    removeVal(val) { }
+    removeVal(val) {
+        if (this.isEmpty()) {
+            return "list empty"
+        }
+        let runnerHead = this.head
+        let runnerTail = this.tail
+        let foundNode = null
+        if(runnerHead.data == val){
+            foundNode = runnerHead
+            runnerHead.next.prev = null
+            runnerHead = runnerHead.next
+            this.head.next = null
+            this.head = runnerHead
+            return foundNode
+        }
+        if(runnerTail.data == val){
+            foundNode = runnerTail
+            runnerTail.prev.next = null
+            runnerHead = runnerTail.prev
+            this.tail.pev = null
+            this.tail = runnerTail
+            return foundNode
+        }
+        
+        while (runnerHead != runnerTail && runnerTail.next != runnerHead && foundNode == null) {
+            if (runnerHead.data === val) {
+                foundNode = runnerHead
+            }
+            if (runnerTail.data === val) {
+                foundNode = runnerTail
+            }
+            runnerHead = runnerHead.next
+            runnerTail = runnerTail.prev
+
+        }
+
+        if(foundNode != null){
+            foundNode.prev.next = foundNode.next
+            foundNode.next.prev = foundNode.prev 
+            foundNode.prev = null
+            foundNode.next = null
+            return foundNode
+        }else{
+            return "node not found"
+        }
+     }
 
     // add node before target
     // target is the value of a node in the list
@@ -149,6 +209,22 @@ class DLList {
     removeHead() { }
 
 }
+
+
+let node1 = new DLLNode(11)
+let node2 = new DLLNode(22)
+let node3 = new DLLNode(33)
+let node4 = new DLLNode(22)
+let node5 = new DLLNode(11)
+
+let dll = new DLList()
+dll.addHead(node1)
+dll.addHead(node2)
+dll.addHead(node3)
+dll.addHead(node4)
+dll.addHead(node5)
+
+console.log(dll.isPalindrome())
 
 // instantiate the DLL
 // add a few nodes

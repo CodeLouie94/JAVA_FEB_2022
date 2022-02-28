@@ -19,10 +19,42 @@ class DLList {
     // return true or false if the current linked list is a palindrome
     // a palindrome is a string of characters equal to itself when reversed
     // assume your node.data are all numbers or lowercase chars
-    isPalindrome() { }
+    isPalindrome() {
+        // do we really need 2 runners?
+        var runner = this.head;
+        var forward = "";
+        var backward = "";
+
+        // though we still walk through every character, it is still 0(n) if we walk through n/2
+        while (runner) {
+            forward += runner.data;
+            backward = runner.data + backward;
+            runner = runner.next;
+        }
+        return forward === backward;
+    }
 
     // reverse a doubly linked list in place
-    reverse() { }
+    reverse() {
+        var runner = this.head;
+        if (runner === null) return;
+        if (runner === this.tail) return;
+
+        while (runner) {
+            var temp = runner.next;
+            runner.next = runner.prev;
+            runner.prev = temp;
+            runner = temp;
+
+            // [runner.prev, runner.next] = [runner.next, runner.prev];
+            // runner = runner.next;
+        }
+
+        var temp = this.head;
+        this.head = this.tail;
+        this.tail = temp;
+
+    }
     // ---------------------------
 
     // remove and return the first node with data === val, if it exists
@@ -30,7 +62,54 @@ class DLList {
     // what if the target val is the head?
     // what if the target val is the tail?
     // what if the target val is the only node in the list?
-    removeVal(val) { }
+    removeVal(val) {
+        var runner = this.head;
+
+        // totally empty
+        if (!runner) {
+            return runner;
+        }
+
+        // remove head and tail
+        if (runner === this.tail && runner.data === val) {
+            this.head = null;
+            this.tail = null;
+            return runner;
+        }
+
+        // remove just head
+        if (runner.data === val) {
+            this.head = runner.next;
+            this.head.prev = null;
+            runner.next = null;
+            return runner;
+        }
+
+        // okay everything else now
+        while (runner) {
+            if (runner.data !== val) {
+                runner = runner.next; // if not val, keep moving runner
+            } else {
+                // we have now found the value
+
+                // remove the tail
+                if (runner === this.tail) {
+                    this.tail = runner.prev;
+                    runner.prev.next = null;
+                    runner.prev = null;
+                    return runner;
+                }
+
+                // all other cases
+                runner.prev.next = runner.next;
+                runner.next.prev = runner.prev;
+                runner.next = null;
+                runner.prev = null;
+                return runner;
+            }
+        }
+    }
+
 
     // add node before target
     // target is the value of a node in the list

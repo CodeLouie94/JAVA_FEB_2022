@@ -155,3 +155,115 @@ class DLList {
 // call the methods
 // TEST EARLY and OFTEN!
 // Good luck :)
+
+
+// DLLNodes have a .next and .prev
+class DLLNode {
+    constructor(data) {
+        this.data = data;
+        this.prev = null;
+        this.next = null;
+    }
+}
+// ⚠ other methods removed for brevity ⚠
+// DLLists have both a .head and .tail pointer
+class DLList {
+    constructor() {
+        this.head = null;
+        this.tail = null;
+    }
+
+    // == Main Methods ==
+
+    // return true or false if the current linked list is a palindrome
+    // a palindrome is a string of characters equal to itself when reversed
+    // assume your node.data are all numbers or lowercase chars
+    isPalindrome() {
+      let left = this.head;
+      let right = this.tail;
+      let strL = ""
+      let strR = ""
+      if ( right == null) {
+        return false;
+      }
+      // run each all the way copy all the values into a string. compare
+      while (left.next == right.prev) {
+          strL += left.data;
+          strR += right.data;
+          left = left.next;
+          right = right.prev;
+      }
+       if (strL == strR) {
+           return true
+       } 
+    
+       return false;
+      
+    }
+      
+    // push to head
+    addHead(node) {
+        if (!this.head) { // empty list
+            this.head = node;
+            this.tail = node;
+        } else {
+            this.head.prev = node;
+            node.next = this.head;
+            this.head = node;
+
+            // this.tail.next = node;
+            // node.prev = this.tail;
+            // this.tail = node;
+        }
+    }
+
+  
+    // ⚠ other methods removed for brevity ⚠
+    // reverse a doubly linked list in place
+    reverse() { }
+    // get one runner 
+    // create temp variable
+    // add to head
+    // add to tail once we pull it back out 
+
+
+
+
+    // ---------------------------
+    // ⚠ other methods removed for brevity ⚠
+    // remove and return the first node with data === val, if it exists
+    // what if the list is empty?
+    // what if the target val is the head?
+    // what if the target val is the tail?
+    // what if the target val is the only node in the list?
+    removeVal(val) { }
+    // ⚠ other methods removed for brevity ⚠
+
+}
+
+
+var dll = new DLList();
+var node1 = new DLLNode("r")
+var node2 = new DLLNode("a")
+var node3 = new DLLNode("c")
+var node4 = new DLLNode("e")
+var node5  = new DLLNode("c")
+var node6  = new DLLNode("a")
+var node7  = new DLLNode("r")
+
+dll.addHead(node1)
+dll.addHead(node2)
+dll.addHead(node3)
+dll.addHead(node4)
+dll.addHead(node5)
+dll.addHead(node6)
+dll.addHead(node7)
+ 
+console.log(dll)
+console.log(dll.isPalindrome())
+// ⚠ ... other methods removed for brevity ⚠
+// instantiate the DLL
+// add a few nodes
+// call the methods
+// TEST EARLY and OFTEN!
+// Good luck :)

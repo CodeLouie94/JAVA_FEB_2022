@@ -19,10 +19,38 @@ class DLList {
     // return true or false if the current linked list is a palindrome
     // a palindrome is a string of characters equal to itself when reversed
     // assume your node.data are all numbers or lowercase chars
-    isPalindrome() { }
+    isPalindrome() { 
+        let runner1= this.head
+        let runner2= this.tail
+        let string1=""
+        let string2=""
+        while (runner1.next){
+            string1 += runner1.data
+            string2 += runner2.data
+            runner1 = runner1.next
+            runner2= runner2.prev
+        }
+        if (string1 === string2){
+            return true
+        }
+        return false
+
+    }
 
     // reverse a doubly linked list in place
-    reverse() { }
+    reverse() { 
+        let runner = this.head.next
+        let runner2 = this.head
+        while (runner.next != null){
+            runner.prev.next= runner.prev.prev
+            runner2.prev = runner
+            runner2= runner2.prev
+            runner= runner.next
+        }
+        this.tail = this.head
+        this.head = runner
+        return this
+    }
     // ---------------------------
 
     // remove and return the first node with data === val, if it exists
@@ -155,3 +183,13 @@ class DLList {
 // call the methods
 // TEST EARLY and OFTEN!
 // Good luck :)
+ourDLL= new DLList
+ourDLL.addHead(new DLLNode(11))
+ourDLL.addHead(new DLLNode(22))
+ourDLL.addHead(new DLLNode(22))
+ourDLL.addHead(new DLLNode(22))
+ourDLL.addHead(new DLLNode(11))
+
+console.log(ourDLL)
+// console.log(ourDLL.isPalindrome())
+console.log(ourDLL.reverse())

@@ -19,10 +19,36 @@ class DLList {
     // return true or false if the current linked list is a palindrome
     // a palindrome is a string of characters equal to itself when reversed
     // assume your node.data are all numbers or lowercase chars
-    isPalindrome() { }
+    isPalindrome() { 
+        let drive = this.head;
+        let reverse = this.tail;
+        while(drive !== reverse && drive.prev !== reverse){
+            console.log("While")
+            console.log(drive.data)
+            console.log(reverse.data)
+            if(drive.data !== reverse.data){
+                return false;
+            } 
+                drive = drive.next;
+                reverse = reverse.prev;
+        }
+        return true;
+    }
 
     // reverse a doubly linked list in place
-    reverse() { }
+    reverse() { 
+        let drive=this.head
+        while (drive){
+            let temp=drive.prev;
+            drive.prev=drive.next
+            drive.next=temp;
+            drive=drive.prev;
+        }
+        let temp=this.head;
+        this.head=this.tail
+        this.tail=temp;
+        
+    }
     // ---------------------------
 
     // remove and return the first node with data === val, if it exists
@@ -30,7 +56,25 @@ class DLList {
     // what if the target val is the head?
     // what if the target val is the tail?
     // what if the target val is the only node in the list?
-    removeVal(val) { }
+    removeVal(val) { 
+        let runner = this.head;
+        if(this.head == null){
+            return null;
+        }
+        if(this.head == val){
+            this.head == null;
+            return runner;
+        }
+        while(runner){
+            if(runner.data == val){
+                runner.prev.next = runner.next;
+                runner.next.prev = runner.prev;
+                runner.next = null;
+                runner.prev = null;
+            }
+        }
+        return runner;
+    }
 
     // add node before target
     // target is the value of a node in the list
@@ -155,3 +199,6 @@ class DLList {
 // call the methods
 // TEST EARLY and OFTEN!
 // Good luck :)
+
+var  list1 = new DLList()
+
