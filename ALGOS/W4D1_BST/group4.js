@@ -42,7 +42,40 @@ class BST {
             |     pass a changed current as we call the function again
             |       |
             v       v                       */
-    insert(node, current) { };
+    insert(node, current) {
+
+        //defaults
+        if (current === undefined) {
+            current = this.root;
+        }
+        //if tree empty -edge case
+        if(this.root === null){
+            this.root = node
+            return
+        }
+
+        //logic
+        if(node.val < current.val){
+            if(current.left == null){
+                current.left = node
+                //breakpoint
+                return
+            }else{
+                current = current.left
+            }
+        }else if(node.val > current.val){
+            if(current.right == null){
+                current.right = node
+                //breakpoint
+                return
+            }else{
+                current = current.right
+            }
+        }
+
+        //recursion
+        return this.insert(node, current)
+    };
 };
 
 

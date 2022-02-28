@@ -42,7 +42,48 @@ class BST {
             |     pass a changed current as we call the function again
             |       |
             v       v                       */
-    insert(node, current) { };
+    insert(node, current) { 
+         // create defaults
+         if (current === undefined) {
+            current = this.root;
+        }
+
+        // if the tree is empty?
+        if (current === null) {
+            this.root = node;
+            return 
+        }
+
+        // check if node val is > or < current's val
+        // less than
+        if ( node.val < current.val){
+            // check if current.left is null
+            if (current.left === null){
+                current.left = node
+                return
+            }else{
+                // reassign current
+                current = current.left
+                // RECURSE - call the function again (passing in the new current)
+                // return this.insert(node, new_current)
+                return this.insert(node, current)
+            }
+        }
+            if ( node.val > current.val){
+                // check if current.left is null
+                if (current.right === null){
+                    // insert
+                    current.right = node
+                    return
+                }else{
+                    // reassign current
+                    current = current.right
+                    // RECURSE - call the function again (passing in the new current)
+                    // return this.insert(node, new_current)
+                    return this.insert(node, current)
+            }
+        }
+    };
 };
 
 
@@ -54,7 +95,7 @@ class BST {
 // https://www.cs.usfca.edu/~galles/visualization/BST.html
 // http://btv.melezinek.cz/binary-search-tree.html
 
-var myBST = new BST();
+let myBST = new BST();
 myBST.insert(new BSTNode(10));
 myBST.insert(new BSTNode(15));
 myBST.insert(new BSTNode(5));
