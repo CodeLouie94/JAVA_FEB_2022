@@ -68,17 +68,67 @@ class BST {
         }
     };
 
-     // recursive
-     getLargestFromSubtree(current) { }
+    // recursive
+    getLargestFromSubtree(current) {
+        // set a default
+        if (current == undefined) {
+            current = this.root
+        }
+        // see if tree is empty
+        if (current == null) {
+            return "Empty Tree"
+        }
+        //look for end of tree
+        if (current.right == null) {
+            // console.log(current.val);
+            return current.val
+        }
+        return this.getLargestFromSubtree(current.right)
+    }
 
     // iterative
-    getSmallestFromSubtree() { }
+    getSmallestFromSubtree() {
+        // check if tree
+        if (this.root == null) {
+            return "Empty Tree";
+        }
+        // make a runner
+        let runner = this.root
+        // while left node is there 
+        while (runner.left) {
+            runner = runner.left
+        }
+        return runner.val
+    }
 
     // return true or false is val exists within the current tree
     // if current is undefined, current = this.root
-    find(val, current) { }
+    find(val, current) {
+        // default current to root if no current exists
+        if (current === undefined) {
+            current = this.root;
+        }
+        // if empty tree, return false val isnt there
+        if (current === null) {
+            return false;
+        }
+        // if value is there return true
+        if (current.val === val) {
+            return true
+        }
+        // go left
+        if (current.val > val) {
+            // otherwise recurse left
+            return this.find(val, current.left);
+        }
+        //go right
+        if (current.val < val) {
+            // otherwise recurse right
+            return this.find(val, current.right);
+        }
+    }
+}
 
-};
 
 // Recursion is:
 // - function that calls itself
@@ -92,5 +142,14 @@ myBST.insert(new BSTNode(15));
 myBST.insert(new BSTNode(5));
 myBST.insert(new BSTNode(20));
 myBST.insert(new BSTNode(12));
-console.log(myBST);
+// myBST.insert(new BSTNode(0));
+// myBST.insert(new BSTNode(-12));
+
+// console.log(myBST);
 // call other methods here and test!
+
+console.log(myBST.getLargestFromSubtree());
+
+console.log(myBST.getSmallestFromSubtree());
+
+console.log(myBST.find(5));

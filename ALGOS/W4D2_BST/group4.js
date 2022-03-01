@@ -69,15 +69,62 @@ class BST {
     };
 
      // recursive
-     getLargestFromSubtree(current) { }
+    getLargestFromSubtree(current) {
+        if(current == undefined){
+            current = this.root;
+        }
+
+        if (current === null) {
+            this.root = node;
+            return "this tree is empty"
+        };
+
+        if(current.right){
+            this.getLargestFromSubtree(current.right)
+        }else{
+            console.log(current.val)
+            return current.val
+        }
+    }
 
     // iterative
-    getSmallestFromSubtree() { }
+    getSmallestFromSubtree() {
+        let current = this.root
+        if (current === null) {
+            this.root = node;
+            return "this tree is empty"
+        };
+        while(current.left != null){
+            current = current.left;
+        }
+        console.log(current.val)
+        return current.val
+    }
 
     // return true or false is val exists within the current tree
     // if current is undefined, current = this.root
-    find(val, current) { }
-
+    find(val, current) {
+        //default
+        if(current === undefined){
+            current = this.root;
+        }
+        //break point
+        if (current === null) {
+            return false
+        }
+        if(current.val === val){
+            return true;
+        }
+        //logic
+        if(val > current.val){
+            current = current.right
+            //recursion
+            return this.find(val, current)
+        }else{
+            //recursion
+            return this.find(val, current.left)
+        }
+    }
 };
 
 // Recursion is:
@@ -93,4 +140,9 @@ myBST.insert(new BSTNode(5));
 myBST.insert(new BSTNode(20));
 myBST.insert(new BSTNode(12));
 console.log(myBST);
+
 // call other methods here and test!
+
+myBST.getLargestFromSubtree();
+myBST.getSmallestFromSubtree();
+console.log(myBST.find(50));

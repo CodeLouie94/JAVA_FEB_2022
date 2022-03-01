@@ -68,15 +68,68 @@ class BST {
         }
     };
 
-     // recursive
-     getLargestFromSubtree(current) { }
+    // recursive
+    getLargestFromSubtree(current) {
+        if (current == undefined) {
+            current = this.root
+        }
+        if (current == null) {
+            return null
+        }
+
+        if (current.right != null) {
+            current = current.right;
+            return this.getLargestFromSubtree(current);
+        } else {
+            return current.val;
+        }
+    }
 
     // iterative
-    getSmallestFromSubtree() { }
+    getSmallestFromSubtree() {
+        let current = this.root
+
+        if (current == null) {
+            return null
+        }
+        while (current.left != null) {
+            current = current.left
+        }
+        return current.val;
+    }
 
     // return true or false is val exists within the current tree
     // if current is undefined, current = this.root
-    find(val, current) { }
+    find(val, current) {
+        // default current to root if no current exists
+        if (current === undefined) {
+            current = this.root;
+        };
+        // if empty tree, new node becomes root
+        if (current === null) {
+            return false;
+        };
+        //base case
+        if(current.val == val){
+            return true;
+        }
+    
+        if (current.val > val) { // go left
+            if(current.left == null){
+                return false;
+            } else {
+                return this.find(val, current.left); // <-- move current to current.left
+            }
+        } else if (current.val < val) { // go right
+            if(current.right == null){
+                return false;
+            }
+            else {
+                // otherwise recurse right
+                return this.find(val, current.right);
+            }
+        }
+    }
 
 };
 
@@ -93,4 +146,11 @@ myBST.insert(new BSTNode(5));
 myBST.insert(new BSTNode(20));
 myBST.insert(new BSTNode(12));
 console.log(myBST);
+console.log("---------- Get Max (Recursive) ---------");
+console.log(myBST.getLargestFromSubtree());
+console.log("---------- Get Min (Iterative) ---------");
+console.log(myBST.getSmallestFromSubtree());
+console.log("----------- Find (Recursive) -----------");
+console.log("Is 10 in the tree?", myBST.find(10));
+console.log("Is 25 in the tree?", myBST.find(25));
 // call other methods here and test!

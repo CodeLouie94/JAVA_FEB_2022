@@ -69,14 +69,43 @@ class BST {
     };
 
      // recursive
-     getLargestFromSubtree(current) { }
+     getLargestFromSubtree(current) { 
+        if( current === undefined){
+            current = this.root;
+        }
+         if (current.right ===null){
+             return current;
+         }
+        return this.getLargestFromSubtree(current.right)
+     }
 
     // iterative
     getSmallestFromSubtree() { }
 
     // return true or false is val exists within the current tree
     // if current is undefined, current = this.root
-    find(val, current) { }
+    find(val, current) { 
+        if(current ===undefined){
+            current = this.root;
+        }
+        if (current ===null){
+            return false;
+        }
+        if(val < current.val){
+            current=current.left;
+        }
+        if(val>current.val){
+            current=current.right;
+        }
+        if (val==current.val){
+            return true;
+        }
+        if (current.next ===null&&val!=current.val){
+            return false;
+
+        }
+     }
+    
 
 };
 
