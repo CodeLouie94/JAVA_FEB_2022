@@ -125,6 +125,23 @@ class BST {
 
     removeLargest(current = this.root) { }
 
+    // --- HELPER METHOD for printing the BST ---
+    // Logs this tree horizontally with the root on the left.
+    print(node = this.root, spaceCnt = 0, spaceIncr = 10) {
+        if (!node) {
+          return;
+        }
+    
+        spaceCnt += spaceIncr;
+        this.print(node.right, spaceCnt);
+    
+        console.log(
+          " ".repeat(spaceCnt < spaceIncr ? 0 : spaceCnt - spaceIncr) +
+            `${node.val}`
+        );
+    
+        this.print(node.left, spaceCnt);
+      }
 };
 
 // Recursion is:
@@ -144,8 +161,8 @@ myBST.insert(new BSTNode(22));
 myBST.insert(new BSTNode(35));
 myBST.insert(new BSTNode(70));
 myBST.insert(new BSTNode(12));
-myBST.insert(new BSTNode(18));
-console.log(myBST);
+// console.log(myBST);
+myBST.print();
 
 // ...resulting in the following tree
 /*
@@ -157,11 +174,12 @@ console.log(myBST);
         /    \       /    \
       10     22     35     70
      /  \   /  \   /  \   /  \
-       12  18      
+       12        
 
   */
 
 console.log(myBST.removeSmallest());
 // console.log("LARGEST ==>", myBST.removeLargest());
-console.log(myBST);
+// console.log(myBST);
+// myBST.print();  // <- uncomment this line
 
