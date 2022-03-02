@@ -121,7 +121,34 @@ class BST {
     }
 
     // -------------- WEDNESDAY 🐸 -----------------  
-    removeSmallest(current  =  this.root) { }
+    removeSmallest(current  =  this.root) {
+        // if (current === undefined) {
+        //     current = this.root;
+        // }
+
+
+        // first iteration possibly move the root
+        if (current.left === null) {
+            this.root = current.right;
+            current.right = null;
+            return current;
+        }
+
+        // base case
+
+        // look ahead
+        if (current.left && (current.left.left === null)) {
+            var smallest = current.left;
+            current.left = smallest.right;
+            smallest.right = null;
+            return smallest;
+        }
+
+        // otherwise recurse
+
+        return this.removeSmallest(current.left);
+    }
+
 
     removeLargest(current = this.root) { }
 
@@ -173,7 +200,7 @@ myBST.print();
         /    \       /    \
       10     22     35     70
      /  \   /  \   /  \   /  \
-       12        
+        12        
 
   */
 

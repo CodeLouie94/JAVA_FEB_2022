@@ -121,9 +121,51 @@ class BST {
     }
 
     // -------------- WEDNESDAY 🐸 -----------------  
-    removeSmallest(current  =  this.root) { }
+    removeSmallest(current = this.root) {
+        if (current === null) {
+            return;
+        }
+        if (current.left.left === null) {
+            let tempNode = current.left;
+            if (current.left.right) {
+                if (current.left.right.val < current.val) {
+                    current.left = current.left.right;
+                    return tempNode;
+                }
+                else {
+                    current.right = current.left.right;
+                    current.left = null;
+                    return tempNode;
+                }
+            }
+            current.left = null;
+            return tempNode;
+        }
+        return this.removeSmallest(current.left);
+    }
 
-    removeLargest(current = this.root) { }
+    removeLargest(current = this.root) {
+        if (current === null) {
+            return;
+        }
+        if (current.right.right === null) {
+            let tempNode = current.right;
+            if (current.right.left) {
+                if (current.right.left.val < current.val) {
+                    current.left = current.right.left;
+                    current.right = null;
+                    return tempNode;
+                }
+                else {
+                    current.right = current.right.left;
+                    return tempNode;
+                }
+            }
+            current.right = null;
+            return tempNode;
+        }
+        return this.removeLargest(current.right);
+    }
 
     // --- HELPER METHOD for printing the BST ---
     // Logs this tree horizontally with the root on the left.

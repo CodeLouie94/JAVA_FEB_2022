@@ -121,7 +121,25 @@ class BST {
     }
 
     // -------------- WEDNESDAY 🐸 -----------------  
-    removeSmallest(current  =  this.root) { }
+    removeSmallest(current  =  this.root) { 
+    if (current === null){
+        return "empty string"
+    } 
+    if (current.left === null){
+        this.head= null
+        return current
+    }
+    let temp;
+  
+     if (current.left.left===null) {
+        temp=current.left
+        current.left = temp.right
+        temp.right=null
+        return temp
+      }else
+    this.removeSmallest(current.left)
+    }
+    
 
     removeLargest(current = this.root) { }
 

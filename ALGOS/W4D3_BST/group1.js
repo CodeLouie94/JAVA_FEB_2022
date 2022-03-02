@@ -121,9 +121,41 @@ class BST {
     }
 
     // -------------- WEDNESDAY 🐸 -----------------  
-    removeSmallest(current  =  this.root) { }
+    removeSmallest(current) { 
+        if (current === undefined) {
+            current = this.root;
+        }
+        if(current.left.left===null){
+            let temp=current.left;
+            current.left=current.left.right;
+            temp.right=null;
+            return temp;
 
-    removeLargest(current = this.root) { }
+        }
+    
+            // THE REASSIGNMENT
+        current=current.left
+        return this.removeSmallest(current);
+        }
+    
+
+    removeLargest(current = this.root) { 
+        if(current.right.right===null){
+            let temp=current.right;
+            current.right=current.right.left;
+            temp.left=null;
+            return temp;
+
+        }
+    
+            // THE REASSIGNMENT
+        current=current.right
+        return this.removeLargest(current);
+        }
+
+
+
+    
 
     // --- HELPER METHOD for printing the BST ---
     // Logs this tree horizontally with the root on the left.
@@ -163,7 +195,10 @@ myBST.insert(new BSTNode(70));
 myBST.insert(new BSTNode(12));
 // console.log(myBST);
 myBST.print();
-
+console.log(myBST.removeSmallest());
+myBST.print();
+console.log(myBST.removeLargest());
+myBST.print();
 // ...resulting in the following tree
 /*
                 BST
@@ -178,7 +213,7 @@ myBST.print();
 
   */
 
-console.log(myBST.removeSmallest());
+// console.log(myBST.removeSmallest());
 // console.log("LARGEST ==>", myBST.removeLargest());
 // console.log(myBST);
 // myBST.print();  // <- uncomment this line

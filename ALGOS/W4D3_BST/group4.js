@@ -121,9 +121,37 @@ class BST {
     }
 
     // -------------- WEDNESDAY 🐸 -----------------  
-    removeSmallest(current  =  this.root) { }
+    removeSmallest(current  =  this.root) {
+        // runner traverse to find smallest by checking .left.left
+        if (current == null){
+            return null //meaning list is empty  
+        }
+        if (current.left.left == null ) { //the left most node is found bc it is null
+            let temp = current.left       //set a temp var to current.left
+            current.left = temp.right
+            temp.right = null
+            return temp
+        }else {
+            return this.removeSmallest(current.left) //recursive call
+        }
+    }
 
-    removeLargest(current = this.root) { }
+    removeLargest(current = this.root) {
+        //is 
+        // let current = this.root
+        let temp;
+        if (current === null){
+            return ""
+        }
+        if (current.right.right == null){
+            let temp = current.right
+            current.right = temp.left //or current.right.left
+            temp.right = null
+            return temp
+        } else {
+            return this.removeLargest(current.right)
+        }
+     }
 
     // --- HELPER METHOD for printing the BST ---
     // Logs this tree horizontally with the root on the left.
