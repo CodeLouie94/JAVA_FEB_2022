@@ -132,9 +132,9 @@ class BST {
     }
 
     // iterative
-    getSmallestFromSubtree() {
+    getSmallestFromSubtree(current) {
         // create runner
-        var runner = this.root;
+        var runner = current;
 
         // return if root is null
         if (!runner) return;
@@ -144,7 +144,7 @@ class BST {
             runner = runner.left;
         }
         // when the while ends, return runner.val
-        return runner.val;
+        return runner;
     }
 
     // --- HELPER METHOD for printing the BST ---
@@ -188,7 +188,30 @@ class BST {
     // -- GOAL -> boil down the node to delete into a single leaf => solved!
 
     // findAndDelete
-    delete(val, current) {  }
+    delete(val, current= this.root) {
+
+        if (current === null ){
+            return null;
+        }
+
+        if (current.val > val) {
+            return this.delete(val, current.left)
+        } else if (current.val < val) {
+            return this.delete(val, current.right)
+        }
+
+        if (current.val == val){
+            let temp = this.getSmallestFromSubtree(current)//55
+            let tempswap = current//60
+            current.val = temp.val;//55
+            current.left = null;
+            console.log(tempswap)
+            return tempswap
+        }
+        
+
+
+    }
 
 };
 

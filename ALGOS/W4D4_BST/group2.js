@@ -124,7 +124,7 @@ class BST {
 
         // if there is no further nodes, return tree
         if (current.right === null) {
-            return current.val;
+            return current;
         }
 
         // else recurse to the right and try again
@@ -132,10 +132,7 @@ class BST {
     }
 
     // iterative
-    getSmallestFromSubtree() {
-        // create runner
-        var runner = this.root;
-
+    getSmallestFromSubtree(runner = this.root) {
         // return if root is null
         if (!runner) return;
 
@@ -144,7 +141,7 @@ class BST {
             runner = runner.left;
         }
         // when the while ends, return runner.val
-        return runner.val;
+        return runner;
     }
 
     // --- HELPER METHOD for printing the BST ---
@@ -188,9 +185,67 @@ class BST {
     // -- GOAL -> boil down the node to delete into a single leaf => solved!
 
     // findAndDelete
-    delete(val, current) {  }
+    // delete(val, current) {
+    //     if (current === undefined) {
+    //         current = this.root;
+    //     }
 
+    //     // base cases
+
+    //     // if current is null, return null
+    //     if (current == null) {
+    //         return null;
+    //     }
+
+    //     // because current is certain to be not null, check val vs val
+    //     // if equal
+    //     if (current.val === val) {
+    //         let largestFromLeft = this.getLargestFromSubtree(current.left);
+    //         let tempValue = largestFromLeft.val
+    //         largestFromLeft.val = current.val
+    //         current.val = tempValue
+    //         // this.removeSmallest(current)
+    //         current.left=null
+    //     }
+
+    //     // decide on which direction
+    //     if (current.val > val) {
+    //         current = current.left;
+    //     } else {
+    //         current = current.right;
+    //     }
+
+    //     // recurse now that current is moved, return the result
+    //     return this.find(val, current); // true / false up the call stack
+    // }
+
+    delete2(val, current = this.root) {
+        if (!current) {
+            return;
+        }
+        if (current.val == val) {
+            let tempNode = this.getSmallestFromSubtree(current.right);
+            tempNode.right = current.right;
+            tempNode.left = current.left;
+            this.root = tempNode;
+            return this.delete2(tempNode.val, current.right);
+        }
+        else if (val < current.val) {
+            if (current.left.val == val) {
+                return current.left = null;
+            }
+            return this.delete2(val, current.left);
+        }
+        else if (val > current.val) {
+            if (current.right.val == val) {
+                return current.right = null;
+            }
+            return this.delete2(val, current.right);
+        }
+    }
 };
+
+
 
 // Recursion is:
 // - function that calls itself
@@ -213,7 +268,9 @@ myBST.insert(new BSTNode(45))
 myBST.insert(new BSTNode(55))
 myBST.insert(new BSTNode(70))
 // console.log(myBST);
-myBST.print();
+
 console.log("*".repeat(30));
-myBST.delete(60);
-myBST.print();
+myBST.delete2(60);
+
+console.log(myBST)
+myBST.print()

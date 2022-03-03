@@ -124,7 +124,7 @@ class BST {
 
         // if there is no further nodes, return tree
         if (current.right === null) {
-            return current.val;
+            return current;
         }
 
         // else recurse to the right and try again
@@ -144,7 +144,7 @@ class BST {
             runner = runner.left;
         }
         // when the while ends, return runner.val
-        return runner.val;
+        return runner;
     }
 
     // --- HELPER METHOD for printing the BST ---
@@ -188,39 +188,71 @@ class BST {
     // -- GOAL -> boil down the node to delete into a single leaf => solved!
 
     // findAndDelete
-    delete(val, current) {  
-        // edge case to set current to root
+    delete(val, current) {
+        // if current is undefined, set as root
         if (current === undefined) {
             current = this.root;
-        }
-        // check if the node equals current node's value, then this is the node to delete
-        if (val === current.val) {
-            // check to see if node has no child leaf
-            if (!current.left && !current.right) {
-            return null;
-            }
-            // check to see if node has one child leaf (either side)
-            else if (!current.left) {
-                return current.right;
-            }
-            else if (!current.right) {
-                return current.left;
-            } else {
-            // check to see if node has two child leaves and assign temp to smallest value
-                let temp = this.getSmallestFromSubtree(current);
-                // swap current and temp
-                current.val = temp.val;
-                // return the node being deleted
-                return this.delete(temp.val, current.right);
-            }            
-            // keep going down the tree (since there are more than one child leaf)
-        } else if (val < current.val) {
-            return this.delete(val, current.left)
-        } else {
-            return this.delete(val, current.right)
+        };
+
+        // if root is null, give up
+        if (current === null) {
+            return;
+        };
+
+        // check if val is smaller or greater
+        if (val < current.val) {
+            // if smaller, ask again on the left subtree
+            return this.delete(val, current.left);
+        } else if (val > current.val) {
+            // if larger, ask again on the right subtree
+            return this.delete(val, current.right);
         }
 
+        //otherwise val is === to current.val
+
+        // one child to the right, or empty
+        if (!current.left) {
+            current = current.right;
+            // one child to the left
+        } else if (!current.right) {
+            current = current.left;
         }
+
+        // two children
+
+        // get the smallest value from the right subtree
+        var temp = this.getSmallestFromSubtree(current.right);
+
+        // swap it with our current (might even be the root, who cares)
+        current.val = temp.val;
+
+        // call delete again, on the val we stole out of temp and swapped to current
+        // this is always a leaf node with one or less children.
+        current.right = this.delete(temp.val, current.right);
+    }
+
+    // delete2(val, current) {
+    //     if (current === undefined) {
+    //         current = this.root;
+    //     }
+    //     console.log(current);
+    //     if (val > current.val) {
+    //         return this.delete(val,current.right);
+    //     }
+    //     else if (val < current.val) {
+    //         return this.delete(val,current.left);
+    //     }
+    //     if (val == current.val){
+    //         var swap = this.getLargestFromSubtree(current.right);
+    //         console.log(swap);
+    //         current = swap;
+    //         return current;
+    //     }
+    // }
+
+    
+
+
 
 };
 
@@ -244,8 +276,13 @@ myBST.insert(new BSTNode(20))
 myBST.insert(new BSTNode(45))
 myBST.insert(new BSTNode(55))
 myBST.insert(new BSTNode(70))
-// console.log(myBST);
-myBST.print();
+
+myBST.insert(new BSTNode(56))
+myBST.insert(new BSTNode(61))
+console.log(myBST);
+// myBST.print();
 console.log("*".repeat(30));
 myBST.delete(60);
-myBST.print();
+console.log(myBST);
+console.log("¯\\_(ツ)_/¯");
+// myBST.print();

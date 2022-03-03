@@ -124,7 +124,7 @@ class BST {
 
         // if there is no further nodes, return tree
         if (current.right === null) {
-            return current.val;
+            return current
         }
 
         // else recurse to the right and try again
@@ -188,7 +188,24 @@ class BST {
     // -- GOAL -> boil down the node to delete into a single leaf => solved!
 
     // findAndDelete
-    delete(val, current) {  }
+    delete(val, current) { 
+        if(current === undefined){
+            current = this.root
+        }
+        if(current.val === val){
+            let temp = current.val
+            let deleteNode = this.getLargestFromSubtree(current.left)
+            current.val = deleteNode.val
+            deleteNode.val = temp       
+            current.left = null
+            return deleteNode
+        }else if(current.val>val){
+            return this.delete(val, current.left)
+        }else{
+            return this.delete(val, current.right)
+        }
+        
+    }
 
 };
 
@@ -215,5 +232,8 @@ myBST.insert(new BSTNode(70))
 // console.log(myBST);
 myBST.print();
 console.log("*".repeat(30));
-myBST.delete(60);
+
+console.log(myBST.delete(60));
+
 myBST.print();
+
